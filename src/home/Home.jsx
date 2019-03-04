@@ -1,29 +1,25 @@
-import React, {Component} from 'react'
-import PropTypes from 'prop-types'
-import axios from 'axios' 
+import React, { Component } from "react";
+import fetchArticles from '../utils/api-requests'
+import mapArticlesData from '../utils/utils'
 
-class Home extends Component{
+class Home extends Component {
   state = {
-  latestArticles: []
+    articles: []
+  };
+  componentDidMount() {
+    fetchArticles({limit: 5}).then(articles => this.setState({ articles }));
   }
 
-  componentDidMount(){}
-
-
-  render(){
-  return (
-    <div>
-     <h3>Home: Latest News</h3>
-
-
-    </div>
-  )
-}
+  render() {
+    const { articles } = this.state;
+    return (
+      <div>
+        <h3>Home: Latest News</h3>
+        {mapArticlesData(articles)}
+      </div>
+    );
+  }
 }
 
-// Home.propTypes = {
 
-// }
-
-export default Home
-
+export default Home;
