@@ -1,13 +1,18 @@
 import React, { Component } from "react";
-import fetchArticles from '../utils/api-requests'
-import mapArticlesData from '../utils/utils'
+import { fetchArticles } from "../utils/api-requests";
+import mapArticlesData from "../utils/utils";
+import propTypes from "prop-types";
 
 class Home extends Component {
+  static propTypes = {
+    topics: propTypes.string
+  };
   state = {
     articles: []
   };
+
   componentDidMount() {
-    fetchArticles({limit: 5}).then(articles => this.setState({ articles }));
+    fetchArticles({ limit: 5 }).then(articles => this.setState({ articles }));
   }
 
   render() {
@@ -20,6 +25,5 @@ class Home extends Component {
     );
   }
 }
-
 
 export default Home;

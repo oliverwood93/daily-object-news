@@ -1,10 +1,12 @@
 import React, { Component } from "react";
-import fetchArticles from "../utils/api-requests";
+import { fetchArticles } from "../utils/api-requests";
 import mapArticlesData from "../utils/utils";
+import TopicSelector from "./components/TopicSelector";
 
 class Articles extends Component {
   state = {
-    articles: []
+    articles: [],
+    selectedTopic: null
   };
 
   componentDidMount() {
@@ -16,10 +18,12 @@ class Articles extends Component {
     return (
       <div>
         <h3>Articles</h3>
-       {mapArticlesData(articles)}
+        <TopicSelector topics={this.props.topics}/>
+        {mapArticlesData(articles)}
       </div>
     );
   }
+  
 }
 
 export default Articles;
