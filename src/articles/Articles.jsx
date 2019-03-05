@@ -2,13 +2,14 @@ import React, { Component } from "react";
 import { fetchArticles } from "../utils/api-requests";
 import TopicSelector from "../components/TopicSelector";
 import ArticleList from "../components/ArticleList";
-import SortyBy from '../components/SortyBy'
+import SortyBy from "../components/SortyBy";
 
 class Articles extends Component {
   state = {
     articles: [],
-    selectedTopic: null,
-    sortAndOrder: null
+    topic: null,
+    sort_by: null,
+    order: null
   };
 
   componentDidMount() {
@@ -16,12 +17,17 @@ class Articles extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const { selectedTopic } = this.state;
-    if (prevState.selectedTopic !== selectedTopic) {
-      fetchArticles(selectedTopic ? { topic: selectedTopic } : null).then(articles =>
-        this.setState({ articles })
-      );
-    }
+    const { topic, sort_by, order } = this.state;
+    const queryObj = {};
+    if (topic && topic !== '') queryObj.topic = topic
+    if (sort_by && sort_by !== '') queryObj.sort_by = sort_by
+    if (order && order !== '') queryObj.order = order
+
+    if (prevState.topic !== topic || prevState.sort_by !== sort_by || prevState.order !== order) {
+        fetchArticles(queryObj).then(articles =>
+          this.setState({ articles })
+        );
+      }
   }
 
   render() {
@@ -31,26 +37,23 @@ class Articles extends Component {
       <div>
         <h3>Articles</h3>
         <TopicSelector topics={this.props.topics} handleSelect={this.handleSelect} />
-        <br/>
-        <SortyBy handleSubmit={this.handleSubmit}/>
-        <ArticleList articles={articles} handleClick={handleClick}/>
+        <br />
+        <SortyBy handleSubmit={this.handleSubmit} />
+        <ArticleList articles={articles} handleClick={handleClick} />
       </div>
     );
   }
   handleSelect = event => {
-    const selectedTopic = event.target.value;
-    this.setState({ selectedTopic });
+    const topic = event.target.value;
+    this.setState({ topic });
   };
 
   handleSubmit = event => {
-    event.preventDefault()
-    const sortAndOrder = {
-      sort_by: event.target[0].value,
-      order: event.target[1].value
-    }
-    this.setState({sortAndOrder})
-
-  }
+    event.preventDefault();
+    const sort_by = event.target[0].value;
+    const order = event.target[1].value;
+    this.setState({ sort_by, order });
+  };
 }
 
 export default Articles;

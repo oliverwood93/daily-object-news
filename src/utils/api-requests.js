@@ -5,7 +5,7 @@ const baseURL = "https://oliverwood-news-api.herokuapp.com/api";
 export const fetchArticles = querys => {
   const querystr = querystring.stringify(querys);
   return axios
-    .get(`${baseURL}/articles${querystr !== "" ? "?" + querystr : ""}`)
+    .get(`${baseURL}/articles?${querystr}`)
     .then(({ data: { articles } }) => articles);
 };
 

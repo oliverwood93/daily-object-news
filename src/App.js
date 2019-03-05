@@ -5,8 +5,9 @@ import Home from "./home/Home";
 import Articles from "./articles/Articles";
 import Article from "./article/Article";
 import SideMenu from "./components/SideMenu";
-import Login from "./login/Login";
-import UserDropdown from "./components/UserDropdown";
+import LoginPage from "./login/LoginPage";
+// import UserDropdown from "./components/UserDropdown";
+import LoginDashboard from "./components/LoginDashBoard"
 
 import "./App.css";
 
@@ -27,13 +28,13 @@ class App extends Component {
         <h1 className="site-title">The Daily Object News</h1>
         <SideMenu />
         <Router>
-          <UserDropdown path="/*" id="dash-dropdown" handleSignInUser={this.handleSignInUser} />
+          <LoginDashboard path="/*" handleSignInUser={this.handleSignInUser}/>
         </Router>
         <Router className="router">
           <Home path="/" />
           <Articles path="/articles" topics={topics} />
           <Article path="/articles/:id" />
-          <Login path="/login" handleSignInUser={this.handleSignInUser} />
+          <LoginPage path="/login" handleSignInUser={this.handleSignInUser} />
         </Router>
       </div>
     );
