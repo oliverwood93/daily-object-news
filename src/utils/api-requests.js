@@ -1,9 +1,11 @@
 import axios from "axios";
+import querystring from 'querystring'
 const baseURL = "https://oliverwood-news-api.herokuapp.com/api";
 
-export const fetchArticles = ({ limit }) => {
+export const fetchArticles = (querys) => {
+  const querystr = querystring.stringify(querys)
   return axios
-    .get(`${baseURL}/articles?${limit !== undefined ? `limit=` + limit : ""}`)
+    .get(`${baseURL}/articles?${querystr}`)
     .then(({ data: { articles } }) => articles);
 }
 

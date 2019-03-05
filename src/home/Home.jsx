@@ -1,12 +1,8 @@
 import React, { Component } from "react";
 import { fetchArticles } from "../utils/api-requests";
-import mapArticlesData from "../utils/utils";
-import propTypes from "prop-types";
+import ArticleList from '../components/ArticleList'
 
 class Home extends Component {
-  static propTypes = {
-    topics: propTypes.string
-  };
   state = {
     articles: []
   };
@@ -20,7 +16,7 @@ class Home extends Component {
     return (
       <div>
         <h3>Home: Latest News</h3>
-        {mapArticlesData(articles)}
+        <ArticleList articles={articles}/>
       </div>
     );
   }
