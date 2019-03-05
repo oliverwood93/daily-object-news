@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "@reach/router";
 
-export default function ArticleList({ articles, handleClick }) {
+export default function ArticleList({ articles }) {
   return articles.map(article => {
     return (
       <article key={article.article_id} id={article.article_id}>
@@ -11,7 +11,7 @@ export default function ArticleList({ articles, handleClick }) {
         <p>
           Comments: {article.comment_count} Votes: {article.votes}
         </p>
-        <Link to={`/article/${article.article_id}`} >
+        <Link to={`/articles/${article.article_id}`} >
           <button>
             more
           </button>

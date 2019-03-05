@@ -2,11 +2,13 @@ import React, { Component } from "react";
 import { fetchArticles } from "../utils/api-requests";
 import TopicSelector from "../components/TopicSelector";
 import ArticleList from "../components/ArticleList";
+import SortyBy from '../components/SortyBy'
 
 class Articles extends Component {
   state = {
     articles: [],
-    selectedTopic: null
+    selectedTopic: null,
+    sortAndOrder: null
   };
 
   componentDidMount() {
@@ -29,6 +31,8 @@ class Articles extends Component {
       <div>
         <h3>Articles</h3>
         <TopicSelector topics={this.props.topics} handleSelect={this.handleSelect} />
+        <br/>
+        <SortyBy handleSubmit={this.handleSubmit}/>
         <ArticleList articles={articles} handleClick={handleClick}/>
       </div>
     );
@@ -37,6 +41,16 @@ class Articles extends Component {
     const selectedTopic = event.target.value;
     this.setState({ selectedTopic });
   };
+
+  handleSubmit = event => {
+    event.preventDefault()
+    const sortAndOrder = {
+      sort_by: event.target[0].value,
+      order: event.target[1].value
+    }
+    this.setState({sortAndOrder})
+
+  }
 }
 
 export default Articles;
