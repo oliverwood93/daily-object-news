@@ -20,3 +20,7 @@ export const fetchArticleComments = Id => {
 export const fetchTopics = () => {
   return axios.get(`${baseURL}/topics`).then(({ data: { topics } }) => topics);
 };
+
+export const fetchUsers = () => {
+  return axios.get(`${baseURL}/users`).then(({ data: { users } }) => users);
+};

@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { fetchArticleById, fetchArticleComments } from "../utils/api-requests";
+import ArticleDisplay from '../components/ArticleDisplay'
+import CommentsDisplay from '../components/CommentsDisplay'
 
 class Article extends Component {
   state = {
-    article: null,
+    article: [],
     comments: []
   };
   componentDidMount() {
@@ -13,19 +15,13 @@ class Article extends Component {
   }
   render() {
     const { article, comments } = this.state;
-    return article ? (
+    return (
       <div>
-      <article className="article">
-        <h3>{article.title}</h3>
-        <h4>Topic :{article.topic}</h4>
-        <h4>Author: {article.author}</h4>
-        <p>{article.body}</p>
-      </article>
-     
-    <div className="comments-containter">
-    </div>
+      <ArticleDisplay article ={article}/>
+      <CommentsDisplay comments={comments} />
       </div>
-    ) : null;
+    )
+
     
   }
 }
