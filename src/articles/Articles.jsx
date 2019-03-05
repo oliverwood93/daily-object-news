@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { fetchArticles } from "../utils/api-requests";
 import TopicSelector from "../components/TopicSelector";
-import ArticleList from '../components/ArticleList'
+import ArticleList from "../components/ArticleList";
 
 class Articles extends Component {
   state = {
@@ -14,9 +14,9 @@ class Articles extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const {selectedTopic} = this.state
+    const { selectedTopic } = this.state;
     if (prevState.selectedTopic !== selectedTopic) {
-      fetchArticles(selectedTopic ? {topic: selectedTopic } : null).then(articles =>
+      fetchArticles(selectedTopic ? { topic: selectedTopic } : null).then(articles =>
         this.setState({ articles })
       );
     }
@@ -24,11 +24,12 @@ class Articles extends Component {
 
   render() {
     const { articles } = this.state;
+    const { handleClick } = this.props;
     return (
       <div>
         <h3>Articles</h3>
         <TopicSelector topics={this.props.topics} handleSelect={this.handleSelect} />
-        <ArticleList articles={articles}/>
+        <ArticleList articles={articles} handleClick={handleClick}/>
       </div>
     );
   }
