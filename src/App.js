@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import { Router } from "@reach/router";
+import { Router, navigate } from "@reach/router";
 import { fetchTopics } from "./utils/api-requests";
 import Home from "./home/Home";
 import Articles from "./articles/Articles";
 import Article from "./article/Article";
 import SideMenu from "./components/SideMenu";
 import LoginPage from "./login/LoginPage";
-// import UserDropdown from "./components/UserDropdown";
 import LoginDashboard from "./components/LoginDashBoard"
+import Account from './account/Account'
 
 import "./App.css";
 
@@ -22,19 +22,20 @@ class App extends Component {
   }
 
   render() {
-    const { topics } = this.state;
+    const { topics, user } = this.state;
     return (
       <div className="App">
         <h1 className="site-title">The Daily Object News</h1>
-        <SideMenu />
+        <SideMenu user={user}/>
         <Router>
-          <LoginDashboard path="/*" handleSignInUser={this.handleSignInUser}/>
+          <LoginDashboard path="/*" handleSignInUser={this.handleSignInUser} user={user}/>
         </Router>
         <Router className="router">
           <Home path="/" />
           <Articles path="/articles" topics={topics} />
           <Article path="/articles/:id" />
           <LoginPage path="/login" handleSignInUser={this.handleSignInUser} />
+          <Account path="/account/:user" />
         </Router>
       </div>
     );

@@ -1,22 +1,14 @@
-import React from "react";
-import { Link } from "@reach/router";
+import React, { Fragment } from "react";
+import ArticleStub from "./ArticleStub";
+import Voter from "./Voter";
 
 export default function ArticleList({ articles }) {
   return articles.map(article => {
     return (
-      <article key={article.article_id} id={article.article_id}>
-        <h4>{article.title}</h4>
-        <p>{article.author}</p>
-        <p>{article.topic}</p>
-        <p>
-          Comments: {article.comment_count} Votes: {article.votes}
-        </p>
-        <Link to={`/articles/${article.article_id}`} >
-          <button>
-            more
-          </button>
-        </Link>
-      </article>
+      <div key={article.article_id}>
+        <ArticleStub article={article} />
+        <Voter votes={article.votes} />
+      </div>
     );
   });
 }

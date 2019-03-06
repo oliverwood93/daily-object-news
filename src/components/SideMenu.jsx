@@ -3,12 +3,14 @@ import { slide as Menu } from "react-burger-menu";
 import { Link } from "@reach/router";
 import './SideMenu.css'
 
-function SideMenu() {
+function SideMenu({user}) {
   return (
     <Menu>
       <Link to="/">Home</Link>
       <Link to="/articles">Articles</Link>
-      <Link to="/login">Sign-In / Create Account</Link>
+      {user === '' ? <Link to="/login">Sign-In / Create Account</Link>
+      : <Link to={`/account/${user}`}>My Account</Link>
+    }
     </Menu>
   );
 }
