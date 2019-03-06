@@ -13,13 +13,19 @@ class Article extends Component {
   }
   render() {
     const { article } = this.state;
+    const { user } = this.props;
     return (
       <div>
         <ArticleDisplay article={article} />
         <div id="article-page-voter">
-          <Voter votes={article.votes} id={article.article_id} path="/articles" />
+          <Voter
+            votes={article.votes}
+            id={article.article_id}
+            path="/articles"
+            user={user}
+          />
         </div>
-        <CommentSection articleId={this.props.id} user={this.props.user}/>
+        <CommentSection articleId={this.props.id} user={user} />
       </div>
     );
   }

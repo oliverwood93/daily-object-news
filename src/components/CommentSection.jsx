@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import NewCommentBox from "./NewCommentBox";
-import { postComment, fetchArticleComments  } from "../utils/api-requests";
+import { postComment, fetchArticleComments } from "../utils/api-requests";
 import CommentList from "../components/CommentList";
 
 export default class CommentSection extends Component {
@@ -14,10 +14,11 @@ export default class CommentSection extends Component {
   }
   render() {
     const { comments } = this.state;
+    const { user } = this.props;
     return (
       <Fragment>
-        <NewCommentBox handleBlur={this.handleBlur} handleSubmit={this.handleSubmit} user={this.props.user}/>
-        <CommentList comments={comments} />
+        <NewCommentBox handleBlur={this.handleBlur} handleSubmit={this.handleSubmit} user={user} />
+        <CommentList comments={comments} user={user} />
       </Fragment>
     );
   }

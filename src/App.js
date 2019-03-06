@@ -32,7 +32,7 @@ class App extends Component {
         </Router>
         <Router className="router">
           <Home path="/" />
-          <Articles path="/articles" topics={topics} />
+          <Articles path="/articles" topics={topics} user={user}/>
           <Article path="/articles/:id" user={user}/>
           <LoginPage path="/login" handleSignInUser={this.handleSignInUser} />
           <Account path="/account/:user" />

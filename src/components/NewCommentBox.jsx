@@ -15,7 +15,9 @@ export default function NewCommentBox({ handleBlur, handleSubmit, user }) {
             user === "" ? "Please Sign-in or Create Account To Comment" : "Add a comment..."
           }
         />
-        <button disabled={user === ''} type="Submit">Post Comment</button>
+        <button disabled={user === ""} type="Submit">
+          Post Comment
+        </button>
       </form>
     </div>
   );

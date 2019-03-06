@@ -32,14 +32,14 @@ class Articles extends Component {
 
   render() {
     const { articles } = this.state;
-    const { handleClick } = this.props;
+    const { handleClick, user } = this.props;
     return (
       <div>
         <h3>Articles</h3>
         <TopicSelector topics={this.props.topics} handleSelect={this.handleSelect} />
         <br />
         <SortyBy handleSubmit={this.handleSubmit} />
-        <ArticleList articles={articles} handleClick={handleClick} />
+        <ArticleList articles={articles} handleClick={handleClick} user={user}/>
       </div>
     );
   }

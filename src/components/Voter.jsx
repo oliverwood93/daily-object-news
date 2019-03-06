@@ -7,13 +7,23 @@ export default class Voter extends Component {
   };
 
   render() {
-    const { votes } = this.props;
+    const { votes, user } = this.props;
     const { changedVote } = this.state;
     return (
       <div>
         <p>Votes: {votes + changedVote}</p>
-        <button onClick={() => this.handleVoteClick(changedVote === 1 ? -1 : 1)}>Up Vote</button>
-        <button onClick={() => this.handleVoteClick(changedVote === -1 ? 1 : -1)}>Down Vote</button>
+        <button
+          disabled={user === ""}
+          onClick={() => this.handleVoteClick(changedVote === 1 ? -1 : 1)}
+        >
+          Up Vote
+        </button>
+        <button
+          disabled={user === ""}
+          onClick={() => this.handleVoteClick(changedVote === -1 ? 1 : -1)}
+        >
+          Down Vote
+        </button>
       </div>
     );
   }
