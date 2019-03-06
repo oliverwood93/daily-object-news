@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { fetchArticleById, fetchArticleComments } from "../utils/api-requests";
 import ArticleDisplay from '../components/ArticleDisplay'
-import CommentsDisplay from '../components/CommentsDisplay'
+import CommentList from '../components/CommentList'
 
 class Article extends Component {
   state = {
@@ -18,7 +18,7 @@ class Article extends Component {
     return (
       <div>
       <ArticleDisplay article ={article}/>
-      <CommentsDisplay comments={comments} />
+      <CommentList comments={comments} />
       </div>
     )
 

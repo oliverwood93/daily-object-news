@@ -2,7 +2,10 @@
   text-align: center;
 }
 
-.article-stub {
+.article-list {
+  list-style: none;
+}
+.comment-list {
   list-style: none;
 }
 /* .dashboard {

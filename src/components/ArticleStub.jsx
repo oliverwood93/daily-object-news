@@ -3,7 +3,6 @@ import { Link } from "@reach/router";
 
 export default function ArticleStub({ article }) {
   return (
-    <li className="article-stub">
       <article>
         <h4>{article.title}</h4>
         <p>{article.author}</p>
@@ -15,6 +14,5 @@ export default function ArticleStub({ article }) {
           <button>more</button>
         </Link>
       </article>
-    </li>
   );
 }

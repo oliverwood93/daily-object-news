@@ -18,8 +18,8 @@ export default class Voter extends Component {
     );
   }
   handleVoteClick = vote => {
-    const { id } = this.props;
-    patchVotes(id, vote);
+    const { id, path } = this.props;
+    patchVotes(id, vote, path);
     this.setState(prevState => {
       return {
         changedVote: prevState.changedVote + vote

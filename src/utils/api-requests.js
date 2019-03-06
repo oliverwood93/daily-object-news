@@ -23,8 +23,7 @@ export const fetchUsers = () => {
   return axios.get(`${baseURL}/users`).then(({ data: { users } }) => users);
 };
 
-export const patchVotes = (id, vote) => {
+export const patchVotes = (id, vote, path) => {
   return axios
-    .patch(`${baseURL}/articles/${id}`, { inc_votes: vote })
-    .then(({ data: {article : {votes}} }) => console.log(votes));
+    .patch(`${baseURL}/${path}/${id}`, { inc_votes: vote })
 };
