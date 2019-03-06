@@ -2,7 +2,6 @@
   text-align: center;
 }
 
-
 .comment-list {
   list-style: none;
 }
@@ -15,7 +14,12 @@
 .article-list {
   border: 2px solid black;
   margin: 10px 40px 10px 40px;
-   list-style: none;
+  list-style: none;
+}
+
+#article-page-voter {
+  border: 2px solid black;
+  margin: 2px 40px 2px 40px;
 }
 /* .dashboard {
   display: list-item
@@ -27,14 +31,13 @@
   
 } */
 
-
- .App-logo {
+.App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 40vmin;
   pointer-events: none;
 }
 
- .App-header {
+.App-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -43,7 +46,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-} 
+}
 
 @keyframes App-logo-spin {
   from {
@@ -53,5 +56,3 @@
     transform: rotate(360deg);
   }
 }
-
- 

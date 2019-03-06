@@ -1,30 +1,27 @@
 import React, { Component } from "react";
-import { fetchArticleById, fetchArticleComments } from "../utils/api-requests";
-import ArticleDisplay from '../components/ArticleDisplay'
-import CommentList from '../components/CommentList'
-import NewCommentBox from '../components/NewCommentBox'
+import { fetchArticleById } from "../utils/api-requests";
+import ArticleDisplay from "../components/ArticleDisplay";
+import Voter from "../components/Voter";
+import CommentSection from "../components/CommentSection";
 
 class Article extends Component {
   state = {
-    article: [],
-    comments: []
+    article: []
   };
   componentDidMount() {
-    return Promise.all([fetchArticleById(this.props.id), fetchArticleComments(this.props.id)]).then(
-      ([article, comments]) => this.setState({ article, comments })
-    );
+    fetchArticleById(this.props.id).then(article => this.setState({ article }));
   }
   render() {
-    const { article, comments } = this.state;
+    const { article } = this.state;
     return (
       <div>
-      <ArticleDisplay article ={article}/>
-      <NewCommentBox />
-      <CommentList comments={comments} />
+        <ArticleDisplay article={article} />
+        <div id="article-page-voter">
+          <Voter votes={article.votes} id={article.article_id} path="/articles" />
+        </div>
+        <CommentSection articleId={this.props.id} user={this.props.user}/>
       </div>
-    )
-
-    
+    );
   }
 }
 

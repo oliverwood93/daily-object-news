@@ -27,3 +27,7 @@ export const patchVotes = (id, vote, path) => {
   return axios
     .patch(`${baseURL}/${path}/${id}`, { inc_votes: vote })
 };
+
+export const postComment = (id, user, comment) => {
+  return axios.post(`${baseURL}/articles/${id}/comments`, {username: user, body: comment}).then(({data: {comment}}) => [comment])
+}
