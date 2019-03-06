@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { patchVotes } from "../utils/api-requests";
 
 export default class Voter extends Component {
   state = {
@@ -6,17 +7,23 @@ export default class Voter extends Component {
   };
 
   render() {
-    const {votes} = this.props
-    const {changedVote} = this.state
+    const { votes } = this.props;
+    const { changedVote } = this.state;
     return (
       <div>
         <p>Votes: {votes + changedVote}</p>
-        <button onClick={() => this.handleVoteClick(1)}>Up Vote</button>
-        <button onClick={() => this.handleVoteClick(-1)}>Down Vote</button>
+        <button onClick={() => this.handleVoteClick(changedVote === 1 ? -1 : 1)}>Up Vote</button>
+        <button onClick={() => this.handleVoteClick(changedVote === -1 ? 1 : -1)}>Down Vote</button>
       </div>
     );
   }
-handleVoteClick = (vote) => {
-
-}
+  handleVoteClick = vote => {
+    const { id } = this.props;
+    patchVotes(id, vote);
+    this.setState(prevState => {
+      return {
+        changedVote: prevState.changedVote + vote
+      };
+    });
+  };
 }

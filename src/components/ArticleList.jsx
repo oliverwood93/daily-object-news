@@ -7,7 +7,7 @@ export default function ArticleList({ articles }) {
     return (
       <div key={article.article_id}>
         <ArticleStub article={article} />
-        <Voter votes={article.votes} />
+        <Voter votes={article.votes} id={article.article_id}/>
       </div>
     );
   });
