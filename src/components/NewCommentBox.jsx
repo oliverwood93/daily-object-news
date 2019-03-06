@@ -1,18 +1,21 @@
 import React from "react";
 
-export default function NewCommentBox({ handleBlur, handleSubmit }) {
+export default function NewCommentBox({ handleBlur, handleSubmit, user }) {
   return (
     <div>
       <form onSubmit={handleSubmit}>
         <textarea
+          disabled={user === ""}
           onBlur={handleBlur}
           required
           name="textbox"
           cols="40"
           rows="5"
-          placeholder="Add a comment..."
+          placeholder={
+            user === "" ? "Please Sign-in or Create Account To Comment" : "Add a comment..."
+          }
         />
-        <button type="Submit">Post Comment</button>
+        <button disabled={user === ''} type="Submit">Post Comment</button>
       </form>
     </div>
   );

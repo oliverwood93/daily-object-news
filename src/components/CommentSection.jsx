@@ -16,7 +16,7 @@ export default class CommentSection extends Component {
     const { comments } = this.state;
     return (
       <Fragment>
-        <NewCommentBox handleBlur={this.handleBlur} handleSubmit={this.handleSubmit} />
+        <NewCommentBox handleBlur={this.handleBlur} handleSubmit={this.handleSubmit} user={this.props.user}/>
         <CommentList comments={comments} />
       </Fragment>
     );
