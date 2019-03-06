@@ -2,11 +2,20 @@
   text-align: center;
 }
 
-.article-list {
-  list-style: none;
-}
+
 .comment-list {
   list-style: none;
+}
+
+.article-display {
+  border: 2px solid black;
+  margin: 10px 40px 10px 40px;
+}
+
+.article-list {
+  border: 2px solid black;
+  margin: 10px 40px 10px 40px;
+   list-style: none;
 }
 /* .dashboard {
   display: list-item

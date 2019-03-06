@@ -1,5 +1,5 @@
 import React from "react";
-import moment from "moment";
+import DatePosted from './DatePosted'
 
 export default function CommentStub({ comment }) {
   const { comment_id, author, body, created_at } = comment;
@@ -7,7 +7,7 @@ export default function CommentStub({ comment }) {
     <article key={comment_id} className="comment">
       <h5>{author}</h5>
       <p>{body}</p>
-      <p> Posted: {moment(created_at).format("MMMM Do YYYY, h:mm:ss a")}</p>
+      <DatePosted createdAt={created_at}/>
     </article>
   );
 }

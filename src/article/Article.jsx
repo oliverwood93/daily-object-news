@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { fetchArticleById, fetchArticleComments } from "../utils/api-requests";
 import ArticleDisplay from '../components/ArticleDisplay'
 import CommentList from '../components/CommentList'
+import NewCommentBox from '../components/NewCommentBox'
 
 class Article extends Component {
   state = {
@@ -18,6 +19,7 @@ class Article extends Component {
     return (
       <div>
       <ArticleDisplay article ={article}/>
+      <NewCommentBox />
       <CommentList comments={comments} />
       </div>
     )
