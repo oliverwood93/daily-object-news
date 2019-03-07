@@ -6,7 +6,7 @@ export default function UserDropdown({ users, handleSignInUser }) {
       <option disabled>
         Please select Username
       </option>
-      {users.map(({ username }) => {
+      {users.map(({username}) => {
         return (
           <option key={username} value={username}>
             {username}

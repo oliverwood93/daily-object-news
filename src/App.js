@@ -34,6 +34,7 @@ class App extends Component {
           <LoginDashboard
             path="/*"
             handleSignInUser={this.handleSignInUser}
+            handleLogoutClick={this.handleLogoutClick}
             user={user}
             users={users}
           />
@@ -43,7 +44,7 @@ class App extends Component {
           <Articles path="/articles" topics={topics} user={user} />
           <Article path="/articles/:id" user={user} />
           <PostNewArticle path="/articles/:username/new_post" user={user} topics={topics} />
-          <LoginPage path="/login" handleSignInUser={this.handleSignInUser} users={users} />
+          <LoginPage path="/login" handleSignInUser={this.handleSignInUser} users={users} user={user}/>
           <Account path="/account/:user" />
         </Router>
       </div>
@@ -53,6 +54,9 @@ class App extends Component {
     const user = event.target.value;
     this.setState({ user });
   };
+  handleLogoutClick = () => {
+    this.setState({user: null})
+  }
 }
 
 export default App;
