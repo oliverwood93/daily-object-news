@@ -3,6 +3,7 @@ import { fetchArticles } from "../utils/api-requests";
 import TopicSelector from "../components/TopicSelector";
 import ArticleList from "../components/ArticleList";
 import SortyBy from "../components/SortyBy";
+import { deleteArticleOrComment } from "../utils/api-requests";
 
 class Articles extends Component {
   state = {
@@ -31,13 +32,19 @@ class Articles extends Component {
   render() {
     const { articles } = this.state;
     const { handleClick, user, path } = this.props;
+    console.log(articles);
     return (
       <div>
         <h3>Articles</h3>
         <TopicSelector topics={this.props.topics} handleSelect={this.handleSelect} path={path} />
         <br />
         <SortyBy handleSubmit={this.handleSubmit} />
-        <ArticleList articles={articles} handleClick={handleClick} user={user} />
+        <ArticleList
+          articles={articles}
+          handleClick={handleClick}
+          user={user}
+          handleRemoveItem={this.handleRemoveItem}
+        />
       </div>
     );
   }
@@ -51,6 +58,19 @@ class Articles extends Component {
     const sort_by = event.target[0].value;
     const order = event.target[1].value;
     this.setState({ sort_by, order });
+  };
+  handleRemoveItem = event => {
+    const articleToRemoveId = +event.target.value;
+    const { path } = this.props;
+    deleteArticleOrComment(articleToRemoveId, path).then(status => {
+     
+      if (status === 204)
+        this.setState(({ articles }) => {
+          return {
+            articles: articles.filter(article => article.article_id !== articleToRemoveId)
+          };
+        });
+    });
   };
 }
 

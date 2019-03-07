@@ -56,3 +56,7 @@ export const postArticle = newArticleData => {
     }) => article_id
   );
 };
+
+export const deleteArticleOrComment = (id, path) => {
+  return axios.delete(`${baseURL}/${path}/${id}`).then(({ status }) => status);
+};
