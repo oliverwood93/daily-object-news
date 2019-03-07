@@ -35,3 +35,7 @@ export const postComment = (id, user, comment) => {
 export const postUser = (newUserInfo) => {
   return axios.post(`${baseURL}/users`, newUserInfo).then(({ data: {user} }) => user)
 }
+
+export const postTopic = (newTopic) => {
+  return axios.post(`${baseURL}/topics`, newTopic).then(({ data: { topic } }) => topic)
+}

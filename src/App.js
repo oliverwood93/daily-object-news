@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Router, navigate } from "@reach/router";
+import { Router } from "@reach/router";
 import { fetchTopics } from "./utils/api-requests";
 import Home from "./home/Home";
 import Articles from "./articles/Articles";
@@ -35,7 +35,7 @@ class App extends Component {
           <Home path="/" user={user}/>
           <Articles path="/articles" topics={topics} user={user}/>
           <Article path="/articles/:id" user={user}/>
-          <PostNewArticle path="/articles/:username/new_post" user={user} />
+          <PostNewArticle path="/articles/:username/new_post" user={user} topics={topics}/>
           <LoginPage path="/login" handleSignInUser={this.handleSignInUser} />
           <Account path="/account/:user" />
         </Router>
