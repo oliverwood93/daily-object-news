@@ -43,6 +43,7 @@ class App extends Component {
   handleSignInUser = event => {
     const user = event.target.value;
     this.setState({user})
+
   };
 }
 

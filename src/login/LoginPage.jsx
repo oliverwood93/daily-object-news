@@ -13,7 +13,7 @@ export default class LoginPage extends Component {
   };
   render() {
     const { handleSignInUser } = this.props;
-    const { userAddSuccessful, name } = this.state;
+    const { userAddSuccessful, name, username } = this.state;
     return (
       <div>
         {userAddSuccessful === false ? (
@@ -28,9 +28,14 @@ export default class LoginPage extends Component {
             />
           </Fragment>
         ) : (
-          <Link to="/user/:username">
-            Thank you for creating an account {name}, please click here to continue to your account
-          </Link>
+          <Fragment>
+            <p>Thank you for creating an account {name}, please click here to login.</p>
+            <Link to={`/account/${username}`}>
+              <button value={username} onClick={handleSignInUser}>
+                Login
+              </button>
+            </Link>
+          </Fragment>
         )}
       </div>
     );
@@ -51,7 +56,7 @@ export default class LoginPage extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    const newUserInfo = this.state;
+    const {userAddSuccessful ,...newUserInfo} = this.state;
     postUser(newUserInfo).then(user => {
       if (user) this.setState({ userAddSuccessful: true });
     });
