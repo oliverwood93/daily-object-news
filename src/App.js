@@ -31,7 +31,7 @@ class App extends Component {
           <LoginDashboard path="/*" handleSignInUser={this.handleSignInUser} user={user}/>
         </Router>
         <Router className="router">
-          <Home path="/" />
+          <Home path="/" user={user}/>
           <Articles path="/articles" topics={topics} user={user}/>
           <Article path="/articles/:id" user={user}/>
           <LoginPage path="/login" handleSignInUser={this.handleSignInUser} />

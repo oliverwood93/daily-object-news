@@ -4,7 +4,7 @@ import ArticleDisplay from "../components/ArticleDisplay";
 import Voter from "../components/Voter";
 import CommentSection from "../components/CommentSection";
 
-class Article extends Component {
+export default class Article extends Component {
   state = {
     article: []
   };
@@ -31,4 +31,4 @@ class Article extends Component {
   }
 }
 
-export default Article;
+

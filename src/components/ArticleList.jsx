@@ -11,7 +11,7 @@ export default function ArticleList({ articles, user }) {
           return (
             <li key={article.article_id} className="article-list">
               <ArticleStub article={article} />
-              <Voter votes={article.votes} id={article.article_id} path="/articles" user={user}/>
+              <Voter votes={article.votes} id={article.article_id} path="/articles" user={user} />
               <Link to={`/articles/${article.article_id}`}>
                 <button>more</button>
               </Link>

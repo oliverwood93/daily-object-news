@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "@reach/router";
 import DatePosted from "./DatePosted";
 
 export default function ArticleStub({ article }) {
