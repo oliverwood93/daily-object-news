@@ -18,7 +18,7 @@ export default class PostNewArticle extends Component {
 
     return (
       <div>
-        {user === "" ? (
+        {!user ? (
           <Fragment>
             <p>You must sign-in before you can post an article.</p>
           </Fragment>

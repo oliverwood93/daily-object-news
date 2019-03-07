@@ -4,16 +4,16 @@ export default function SortyBy({ handleSubmit }) {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <select label="sort_by">
-          <option defaultValue value="">
+        <select defaultValue="Sort By" label="sort_by">
+          <option disabled>
             Sort By
           </option>
           <option value="created_at">Date Posted</option>
           <option value="comment_count">Number of Comments</option>
           <option value="votes">Number of Votes</option>
         </select>
-        <select>
-          <option defaultValue value="">
+        <select defaultValue="Order">
+          <option disabled>
             Order
           </option>
           <option value="asc">Ascending</option>

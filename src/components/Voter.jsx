@@ -19,13 +19,13 @@ export default class Voter extends Component {
       <div>
         <p>Votes: {votes + changedVote}</p>
         <button
-          disabled={user === "" || user === undefined}
+          disabled={!user}
           onClick={() => this.handleVoteClick(changedVote === 1 ? -1 : 1)}
         >
           Up Vote
         </button>
         <button
-          disabled={user === "" || user === undefined}
+          disabled={!user}
           onClick={() => this.handleVoteClick(changedVote === -1 ? 1 : -1)}
         >
           Down Vote
