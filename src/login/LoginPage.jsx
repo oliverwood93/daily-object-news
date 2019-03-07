@@ -12,14 +12,14 @@ export default class LoginPage extends Component {
     userAddSuccessful: false
   };
   render() {
-    const { handleSignInUser } = this.props;
+    const { handleSignInUser, users } = this.props;
     const { userAddSuccessful, name, username } = this.state;
     return (
       <div>
         {userAddSuccessful === false ? (
           <Fragment>
             <h3>Please Login Below:</h3>
-            <UserDropdown id="login-dropdown" handleSignInUser={handleSignInUser} />
+            <UserDropdown id="login-dropdown" handleSignInUser={handleSignInUser} users={users}/>
             <CreateAccountForm
               handleSubmit={this.handleSubmit}
               handleUsernameChange={this.handleUsernameChange}
