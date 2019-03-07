@@ -24,18 +24,35 @@ export const fetchUsers = () => {
 };
 
 export const patchVotes = (id, vote, path) => {
-  return axios
-    .patch(`${baseURL}/${path}/${id}`, { inc_votes: vote })
+  return axios.patch(`${baseURL}/${path}/${id}`, { inc_votes: vote });
 };
 
 export const postComment = (id, user, comment) => {
-  return axios.post(`${baseURL}/articles/${id}/comments`, {username: user, body: comment}).then(({data: {comment}}) => [comment])
-}
+  return axios
+    .post(`${baseURL}/articles/${id}/comments`, { username: user, body: comment })
+    .then(({ data: { comment } }) => [comment]);
+};
 
-export const postUser = (newUserInfo) => {
-  return axios.post(`${baseURL}/users`, newUserInfo).then(({ data: {user} }) => user)
-}
+export const postUser = newUserData => {
+  return axios.post(`${baseURL}/users`, newUserData).then(({ data: { user } }) => user);
+};
 
-export const postTopic = (newTopic) => {
-  return axios.post(`${baseURL}/topics`, newTopic).then(({ data: { topic } }) => topic)
-}
+export const postTopic = newTopicData => {
+  return axios.post(`${baseURL}/topics`, newTopicData).then(
+    ({
+      data: {
+        topic: { slug }
+      }
+    }) => slug
+  );
+};
+
+export const postArticle = newArticleData => {
+  return axios.post(`${baseURL}/articles`, newArticleData).then(
+    ({
+      data: {
+        article: { article_id }
+      }
+    }) => article_id
+  );
+};
