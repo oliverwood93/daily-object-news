@@ -14,7 +14,6 @@ export default class CommentSection extends Component {
     fetchArticleComments(this.props.articleId).then(comments => this.setState({ comments }));
   }
   render() {
-    console.log(this.props)
     const { comments } = this.state;
     const { user } = this.props;
     return (

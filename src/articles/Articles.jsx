@@ -32,7 +32,6 @@ class Articles extends Component {
   render() {
     const { articles } = this.state;
     const { handleClick, user, path } = this.props;
-    console.log(articles);
     return (
       <div>
         <h3>Articles</h3>
