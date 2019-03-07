@@ -8,6 +8,7 @@ function SideMenu({user}) {
     <Menu>
       <Link to="/">Home</Link>
       <Link to="/articles">Articles</Link>
+      <Link to={`/articles/${user}/new_post`}>Post an Article</Link>
       {user === '' ? <Link to="/login">Sign-In / Create Account</Link>
       : <Link to={`/account/${user}`}>My Account</Link>
     }
