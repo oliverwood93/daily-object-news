@@ -1,42 +1,49 @@
 import React, { Component } from "react";
 import { Router } from "@reach/router";
-import { fetchTopics } from "./utils/api-requests";
+import { fetchTopics, fetchUsers } from "./utils/api-requests";
 import Home from "./home/Home";
 import Articles from "./articles/Articles";
 import Article from "./article/Article";
 import SideMenu from "./components/SideMenu";
 import LoginPage from "./login/LoginPage";
-import LoginDashboard from "./components/LoginDashBoard"
-import Account from './account/Account'
-import PostNewArticle from './post-new-article/PostNewArticle'
+import LoginDashboard from "./components/LoginDashBoard";
+import Account from "./account/Account";
+import PostNewArticle from "./post-new-article/PostNewArticle";
 
 import "./App.css";
 
 class App extends Component {
   state = {
-    user: '',
-    topics: []
+    user: "",
+    topics: [],
+    users: []
   };
 
   componentDidMount() {
     fetchTopics().then(topics => this.setState({ topics }));
+    fetchUsers().then(users => this.setState({ users }));
   }
 
   render() {
-    const { topics, user } = this.state;
+    const { topics, user, users } = this.state;
     return (
       <div className="App">
         <h1 className="site-title">The Daily Object News</h1>
-        <SideMenu user={user}/>
+        <SideMenu user={user} />
         <Router>
-          <LoginDashboard path="/*" handleSignInUser={this.handleSignInUser} user={user}/>
+          <LoginDashboard
+            path="/*"
+            handleSignInUser={this.handleSignInUser}
+            user={user}
+            users={users}
+          />
         </Router>
         <Router className="router">
-          <Home path="/" user={user}/>
-          <Articles path="/articles" topics={topics} user={user}/>
-          <Article path="/articles/:id" user={user}/>
-          <PostNewArticle path="/articles/:username/new_post" user={user} topics={topics}/>
-          <LoginPage path="/login" handleSignInUser={this.handleSignInUser} />
+          <Home path="/" user={user} />
+          <Articles path="/articles" topics={topics} user={user} />
+          <Article path="/articles/:id" user={user} />
+          <PostNewArticle path="/articles/:username/new_post" user={user} topics={topics} />
+          <LoginPage path="/login" handleSignInUser={this.handleSignInUser} users={users} />
           <Account path="/account/:user" />
         </Router>
       </div>
@@ -44,8 +51,7 @@ class App extends Component {
   }
   handleSignInUser = event => {
     const user = event.target.value;
-    this.setState({user})
-
+    this.setState({ user });
   };
 }
 

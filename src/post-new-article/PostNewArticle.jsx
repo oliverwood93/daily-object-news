@@ -46,9 +46,7 @@ export default class PostNewArticle extends Component {
               <button type="submit">Post Article</button>
             </form>
           </Fragment>
-        )
-        //Form for uploading an article will go below
-        }
+        )}
       </div>
     );
   }
@@ -76,12 +74,12 @@ export default class PostNewArticle extends Component {
     event.preventDefault();
     const { user } = this.props;
     const { slug, description, topic, title, body } = this.state;
-    let postPromise = null;
+    let postingNewArticlePromise = null;
     if (topic === "newTopic") {
-      postPromise = postTopic({ slug, description }).then(topic =>
+      postingNewArticlePromise = postTopic({ slug, description }).then(topic =>
         postArticle({ title, body, topic, author: user })
       );
-    } else postPromise = postArticle({ title, body, topic, author: user });
-    postPromise.then(id => navigate(`/articles/${id}`));
+    } else postingNewArticlePromise = postArticle({ title, body, topic, author: user });
+    postingNewArticlePromise.then(id => navigate(`/articles/${id}`));
   };
 }
