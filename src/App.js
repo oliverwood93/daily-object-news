@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import { Router } from "@reach/router";
 import { fetchTopics, fetchUsers } from "./utils/api-requests";
-import Home from "./home/Home";
-import Articles from "./articles/Articles";
-import Article from "./article/Article";
+import Home from "./components/home/Home";
+import Articles from "./components/articles/Articles";
+import Article from "./components/article/Article";
 import SideMenu from "./components/SideMenu";
-import LoginPage from "./login/LoginPage";
+import LoginPage from "./components/login/LoginPage";
 import LoginDashboard from "./components/LoginDashBoard";
-import PostArticlePage from "./post-new-article/PostArticlePage";
+import PostArticlePage from "./components/post-article-page/PostArticlePage";
 import ErrorPage from './error/ErrorPage'
 
 import "./App.css";

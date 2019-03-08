@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import { fetchArticles } from "../utils/api-requests";
-import ArticleList from '../components/ArticleList'
+import { fetchArticles } from "../../utils/api-requests";
+import ArticleList from '../ArticleList'
 
 class Home extends Component {
   state = {

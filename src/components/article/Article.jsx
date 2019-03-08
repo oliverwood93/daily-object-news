@@ -1,9 +1,9 @@
 import React, { Component } from "react";
 import { navigate } from "@reach/router";
-import { fetchArticleById, deleteArticleOrComment } from "../utils/api-requests";
-import ArticleDisplay from "../components/ArticleDisplay";
-import Voter from "../components/Voter";
-import CommentSection from "../components/CommentSection";
+import { fetchArticleById, deleteArticleOrComment } from "../../utils/api-requests";
+import ArticleDisplay from "../ArticleDisplay";
+import Voter from "../Voter";
+import CommentSection from "../CommentSection";
 
 export default class Article extends Component {
   state = {

@@ -1,8 +1,8 @@
 import React, { Component, Fragment } from "react";
 import { Link } from "@reach/router";
-import UserDropdown from "../components/UserDropdown";
-import CreateAccountForm from "../components/CreateAccountForm";
-import { postUser } from "../utils/api-requests";
+import UserDropdown from "../UserDropdown";
+import CreateAccountForm from "../CreateAccountForm";
+import { postUser } from "../../utils/api-requests";
 
 export default class LoginPage extends Component {
   state = {
@@ -12,11 +12,11 @@ export default class LoginPage extends Component {
     userAddSuccessful: false
   };
   render() {
-    const { handleSignInUser, users } = this.props;
+    const { handleSignInUser, users, user } = this.props;
     const { userAddSuccessful, name, username } = this.state;
     return (
       <div>
-        {userAddSuccessful === false ? (
+        {userAddSuccessful === false && !user ? (
           <Fragment>
             <h3>Please Login Below:</h3>
             <UserDropdown id="login-dropdown" handleSignInUser={handleSignInUser} users={users} />
@@ -29,10 +29,10 @@ export default class LoginPage extends Component {
           </Fragment>
         ) : (
           <Fragment>
-            <p>Thank you for creating an account {name}, please click here to login.</p>
-            <Link to={`/account/${username}`}>
+            <p>Thank you for creating an account {name}, please click here to go to the home page.</p>
+            <Link to="/">
               <button value={username} onClick={handleSignInUser}>
-                Login
+                Home Page
               </button>
             </Link>
           </Fragment>

@@ -12,7 +12,7 @@ function SideMenu({ user, handleLogoutClick }) {
       {!user ? (
         <Link to="/login">Sign-In / Create Account</Link>
       ) : (
-          <Link to="/login" ><span onClick={handleLogoutClick}>Logout</span></Link>
+          <Link to="/" ><span onClick={handleLogoutClick}>Logout</span></Link>
       )}
     </Menu>
   );

@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import { fetchArticles } from "../utils/api-requests";
-import TopicSelector from "../components/TopicSelector";
-import ArticleList from "../components/ArticleList";
-import SortyBy from "../components/SortyBy";
-import { deleteArticleOrComment } from "../utils/api-requests";
+import { fetchArticles, deleteArticleOrComment } from "../../utils/api-requests";
+import TopicSelector from "../TopicSelector";
+import ArticleList from "../ArticleList";
+import SortyBy from "../SortyBy";
 
 class Articles extends Component {
   state = {

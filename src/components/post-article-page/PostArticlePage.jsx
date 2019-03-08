@@ -1,8 +1,9 @@
 import React, { Component, Fragment } from "react";
-import TopicSelector from "../components/TopicSelector";
-import PostNewTopic from "../components/PostNewTopic";
-import { postTopic, postArticle } from "../utils/api-requests";
 import { navigate } from "@reach/router";
+import TopicSelector from "../TopicSelector";
+import PostNewTopic from "../PostNewTopic";
+import { postTopic, postArticle } from "../../utils/api-requests";
+
 
 export default class PostArticlePage extends Component {
   state = {
