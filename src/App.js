@@ -7,8 +7,7 @@ import Article from "./article/Article";
 import SideMenu from "./components/SideMenu";
 import LoginPage from "./login/LoginPage";
 import LoginDashboard from "./components/LoginDashBoard";
-import Account from "./account/Account";
-import PostNewArticle from "./post-new-article/PostNewArticle";
+import PostArticlePage from "./post-new-article/PostArticlePage";
 import ErrorPage from './error/ErrorPage'
 
 import "./App.css";
@@ -45,14 +44,13 @@ class App extends Component {
           <Home path="/" user={user} />
           <Articles path="/articles" topics={topics} user={user} />
           <Article path="/articles/:id" user={user} />
-          <PostNewArticle path="/articles/:username/new_post" user={user} topics={topics} />
+          <PostArticlePage path="/articles/:username/new_post" user={user} topics={topics} />
           <LoginPage
             path="/login"
             handleSignInUser={this.handleSignInUser}
             users={users}
             user={user}
           />
-          <Account path="/account/:user" />
           <ErrorPage path="/error" />
           <ErrorPage path="/*" />
         </Router>

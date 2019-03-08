@@ -4,7 +4,7 @@ import PostNewTopic from "../components/PostNewTopic";
 import { postTopic, postArticle } from "../utils/api-requests";
 import { navigate } from "@reach/router";
 
-export default class PostNewArticle extends Component {
+export default class PostArticlePage extends Component {
   state = {
     title: null,
     body: null,
