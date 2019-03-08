@@ -1,10 +1,10 @@
 import React, { Fragment } from "react";
 
-function TopicSelector({ topics, handleSelect, path }) {
+function TopicSelector({ topics, handleSelectTopic, path }) {
   return (
     <select
       defaultValue={path === "/articles" ? "Filter Articles By Topic" : "Please Select a Topic"}
-      onChange={handleSelect}
+      onChange={handleSelectTopic}
       className="topic-selector"
     >
       {path === "/articles" ? (
@@ -22,9 +22,9 @@ function TopicSelector({ topics, handleSelect, path }) {
           </option>
         </Fragment>
       )}
-      {topics.map(({ slug }) => (
-        <option key={slug} value={slug}>
-          {slug}
+      {topics.map((topic) => (
+        <option key={topic.slug} value={topic.slug}>
+          {topic.slug}
         </option>
       ))}
     </select>

@@ -14,6 +14,7 @@ export default class LoginPage extends Component {
   render() {
     const { handleSignInUser, users } = this.props;
     const { userAddSuccessful, name, username } = this.state;
+    console.log(this.props)
     return (
       <div>
         {userAddSuccessful === false ? (

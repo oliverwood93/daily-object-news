@@ -29,7 +29,7 @@ class App extends Component {
     return (
       <div className="App">
         <h1 className="site-title">The Daily Object News</h1>
-        <SideMenu user={user} />
+        <SideMenu user={user} handleLogoutClick={this.handleLogoutClick} />
         <Router>
           <LoginDashboard
             path="/*"
@@ -44,7 +44,12 @@ class App extends Component {
           <Articles path="/articles" topics={topics} user={user} />
           <Article path="/articles/:id" user={user} />
           <PostNewArticle path="/articles/:username/new_post" user={user} topics={topics} />
-          <LoginPage path="/login" handleSignInUser={this.handleSignInUser} users={users} user={user}/>
+          <LoginPage
+            path="/login"
+            handleSignInUser={this.handleSignInUser}
+            users={users}
+            user={user}
+          />
           <Account path="/account/:user" />
         </Router>
       </div>
@@ -55,8 +60,8 @@ class App extends Component {
     this.setState({ user });
   };
   handleLogoutClick = () => {
-    this.setState({user: null})
-  }
+    this.setState({ user: null });
+  };
 }
 
 export default App;

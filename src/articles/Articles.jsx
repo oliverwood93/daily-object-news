@@ -20,7 +20,7 @@ class Articles extends Component {
   componentDidUpdate(prevProps, prevState) {
     const { topic, sort_by, order } = this.state;
     const queryObj = {};
-    if (topic && topic !== "") queryObj.topic = topic;
+    if (topic && topic.slug !== "") queryObj.topic = topic.slug;
     if (sort_by && sort_by !== "") queryObj.sort_by = sort_by;
     if (order && order !== "") queryObj.order = order;
 
@@ -30,12 +30,14 @@ class Articles extends Component {
   }
 
   render() {
-    const { articles } = this.state;
-    const { handleClick, user, path } = this.props;
+    const { articles, topic } = this.state;
+    const { handleClick, user, path, topics } = this.props;
+
     return (
       <div>
         <h3>Articles</h3>
-        <TopicSelector topics={this.props.topics} handleSelect={this.handleSelect} path={path} />
+        {topic && <h4>{topic.slug} - {topic.description}</h4>}
+        <TopicSelector topics={topics} handleSelectTopic={this.handleSelectTopic} path={path} />
         <br />
         <SortyBy handleSubmit={this.handleSubmit} />
         <ArticleList
@@ -47,8 +49,10 @@ class Articles extends Component {
       </div>
     );
   }
-  handleSelect = event => {
-    const topic = event.target.value;
+  handleSelectTopic = event => {
+    const { topics } = this.props
+    const slug = event.target.value;
+    const topic = topics.find(topic => topic.slug === slug)
     this.setState({ topic });
   };
 

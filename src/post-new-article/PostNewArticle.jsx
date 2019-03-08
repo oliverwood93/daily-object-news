@@ -28,7 +28,7 @@ export default class PostNewArticle extends Component {
               Title:{" "}
               <input onChange={this.handleTitleChange} name="title-input" type="text" required />
               <br />
-              <TopicSelector topics={topics} path={path} handleSelect={this.handleSelect} />
+              <TopicSelector topics={topics} path={path} handleSelectTopic={this.handleSelectTopic} />
               {topic === "newTopic" && (
                 <PostNewTopic
                   handleNameChange={this.handleTopicNameChange}
@@ -50,7 +50,7 @@ export default class PostNewArticle extends Component {
       </div>
     );
   }
-  handleSelect = event => {
+  handleSelectTopic = event => {
     const topic = event.target.value;
     this.setState({ topic });
   };
