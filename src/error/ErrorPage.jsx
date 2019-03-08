@@ -17,7 +17,6 @@ export default function ErrorPage({ location }) {
       </div>
     );
   } else if (location.pathname === '/error') {
-    console.log(location);
     return (
       <div>
         <h2>There has been an error, we apologise for the inconvenience</h2>{" "}
@@ -27,7 +26,7 @@ export default function ErrorPage({ location }) {
       </div>
     );
   }
-  else return console.log(location) || <div><h2>Status: 404</h2>
+  else return <div><h2>Status: 404</h2>
   <h2>Page Not Found!</h2>
     <Link to="/">
       <p>Click here to return to the Home page</p>

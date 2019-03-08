@@ -14,13 +14,12 @@ export default class LoginPage extends Component {
   render() {
     const { handleSignInUser, users } = this.props;
     const { userAddSuccessful, name, username } = this.state;
-    console.log(this.props)
     return (
       <div>
         {userAddSuccessful === false ? (
           <Fragment>
             <h3>Please Login Below:</h3>
-            <UserDropdown id="login-dropdown" handleSignInUser={handleSignInUser} users={users}/>
+            <UserDropdown id="login-dropdown" handleSignInUser={handleSignInUser} users={users} />
             <CreateAccountForm
               handleSubmit={this.handleSubmit}
               handleUsernameChange={this.handleUsernameChange}
@@ -57,7 +56,7 @@ export default class LoginPage extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    const {userAddSuccessful ,...newUserInfo} = this.state;
+    const { userAddSuccessful, ...newUserInfo } = this.state;
     postUser(newUserInfo).then(user => {
       if (user) this.setState({ userAddSuccessful: true });
     });

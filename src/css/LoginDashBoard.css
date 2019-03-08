@@ -1,0 +1,47 @@
+.dash-login {
+  text-align: left;
+  margin-left: 50vw;
+  padding: 0em 0.1em 0.5em 6em;
+  border: 1px dotted black;
+  max-width: 50vw;
+  max-height: 10vh;
+  font-size: 90;
+}
+
+.dash-login {
+  text-align: left;
+  margin-left: 50vw;
+  padding: 0em 0.1em 0.5em 6em;
+  border: 2px solid black;
+  border-radius: 5%;
+  max-width: 50vw;
+  max-height: 10vh;
+}
+.dash-signed-in {
+  text-align: left;
+  margin-left: 50vw;
+  border: 2px solid black;
+  border-radius: 5%;
+  max-width: 50vw;
+  max-height: 20vh;
+  align-content: auto;
+  display: grid;
+  grid-template-areas:
+    "avatar text"
+    "avatar logout";
+}
+
+.user-avatar {
+  max-width: 5rem;
+  max-height: auto;
+
+  grid-area: avatar;
+}
+
+.signed-in-message{
+  grid-area: text;
+}
+
+.logout-button{
+  grid-area: logout;
+}

@@ -34,6 +34,7 @@ class App extends Component {
         <Router>
           <LoginDashboard
             path="/*"
+            className="login-dashboard"
             handleSignInUser={this.handleSignInUser}
             handleLogoutClick={this.handleLogoutClick}
             user={user}

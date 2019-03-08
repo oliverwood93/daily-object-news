@@ -10,7 +10,8 @@ export default class PostNewArticle extends Component {
     body: null,
     topic: null,
     slug: null,
-    description: null
+    description: null,
+    isError: false,
   };
   render() {
     const { user, topics, path } = this.props;
@@ -28,7 +29,11 @@ export default class PostNewArticle extends Component {
               Title:{" "}
               <input onChange={this.handleTitleChange} name="title-input" type="text" required />
               <br />
-              <TopicSelector topics={topics} path={path} handleSelectTopic={this.handleSelectTopic} />
+              <TopicSelector
+                topics={topics}
+                path={path}
+                handleSelectTopic={this.handleSelectTopic}
+              />
               {topic === "newTopic" && (
                 <PostNewTopic
                   handleNameChange={this.handleTopicNameChange}
@@ -76,9 +81,9 @@ export default class PostNewArticle extends Component {
     const { slug, description, topic, title, body } = this.state;
     let postingNewArticlePromise = null;
     if (topic === "newTopic") {
-      postingNewArticlePromise = postTopic({ slug, description }).then(topic =>
-        postArticle({ title, body, topic, author: user })
-      );
+      postingNewArticlePromise = postTopic({ slug, description })
+        .then(topic => postArticle({ title, body, topic, author: user }))
+        .catch(err => console.dir(err));
     } else postingNewArticlePromise = postArticle({ title, body, topic, author: user });
     postingNewArticlePromise.then(id => navigate(`/articles/${id}`));
   };

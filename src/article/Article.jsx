@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import {navigate} from '@reach/router'
+import { navigate } from "@reach/router";
 import { fetchArticleById } from "../utils/api-requests";
 import ArticleDisplay from "../components/ArticleDisplay";
 import Voter from "../components/Voter";
@@ -14,7 +14,6 @@ export default class Article extends Component {
     fetchArticleById(id)
       .then(article => this.setState({ article }))
       .catch(({ response }) =>
-      console.log(response) ||
         navigate("/error", {
           replace: true,
           state: {

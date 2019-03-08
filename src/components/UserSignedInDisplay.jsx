@@ -1,20 +1,16 @@
 import React from "react";
 import { Link } from "@reach/router";
-import Img from 'react-image'
 
 export default function UserSignedInDisplay({ signedInUsersInfo, handleLogoutClick }) {
   const { username, avatar_url } = signedInUsersInfo;
   return (
-    <div>
-      <p>Signed in as: {username}</p>
-      <Img
-        src={[avatar_url, "https://www.eyedocs.co.uk/components/com_community/assets/user-anon.png"]}
+    <div className="dash-signed-in">
+      <p className="signed-in-message">Signed in as: {username}</p>
+      <img className="user-avatar"
+        src={avatar_url}
         alt={`${username}'s avatar`}
       />
-      <Link to={`/account/${username}`}>
-        <button>View Account</button>
-      </Link>
-      <button onClick={handleLogoutClick}>Log Out</button>
+      <button className="logout-button" onClick={handleLogoutClick}>Log Out</button>
     </div>
   );
 }
