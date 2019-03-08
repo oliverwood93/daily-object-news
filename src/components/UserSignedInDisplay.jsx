@@ -6,7 +6,7 @@ export default function UserSignedInDisplay({ signedInUsersInfo, handleLogoutCli
   const { username, avatar_url } = signedInUsersInfo;
   return (
     <div>
-      <p>{username}</p>
+      <p>Signed in as: {username}</p>
       <Img
         src={[avatar_url, "https://www.eyedocs.co.uk/components/com_community/assets/user-anon.png"]}
         alt={`${username}'s avatar`}
