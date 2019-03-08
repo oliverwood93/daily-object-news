@@ -29,7 +29,7 @@ class App extends Component {
     const { topics, user, users } = this.state;
     return (
       <div className="App">
-        <h1 className="site-title">The Daily Object News</h1>
+        <h1 className="site-header">The Daily Object News</h1>
         <SideMenu user={user} handleLogoutClick={this.handleLogoutClick} />
         <Router>
           <LoginDashboard

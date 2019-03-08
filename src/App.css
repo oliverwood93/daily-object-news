@@ -21,21 +21,7 @@
   border: 2px solid black;
   margin: 2px 40px 2px 40px;
 }
-/* .dashboard {
-  display: list-item
-} */
 
-/* .site-title {
-  background-color: #8f5604;
-  margin: 0 0 0 0;
-  
-} */
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
 
 .App-header {
   background-color: #282c34;
@@ -48,11 +34,23 @@
   color: white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+
+h1 {
+  all: unset;
 }
+
+.site-header {
+  text-align: left;
+  width: 600vw;
+  padding-top: 1em;
+  padding-left: 14%;
+  margin-bottom: 0.2em;
+  /* margin-top: 1em;
+  margin-left: 14%; */
+  color: whitesmoke;
+  background-color: #8b8b8b;
+  font-size: 2em;
+  display: inline-block;
+  border-bottom: 5px solid teal;
+}
+
