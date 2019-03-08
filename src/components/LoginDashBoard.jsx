@@ -11,7 +11,7 @@ export default function LoginDashBoard({
   handleLogoutClick
 }) {
   const signedInUsersInfo = users.find(({ username }) => username === user);
-  if (pathname !== "/login" && pathname !== `/account/${user}` && !user) {
+  if (pathname !== "/login" && pathname !== `/account/${user}` && !user && pathname !== '/error') {
     return (
       <div className="dashboard">
         <p>Login:</p>{" "}

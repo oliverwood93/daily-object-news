@@ -9,6 +9,7 @@ import LoginPage from "./login/LoginPage";
 import LoginDashboard from "./components/LoginDashBoard";
 import Account from "./account/Account";
 import PostNewArticle from "./post-new-article/PostNewArticle";
+import ErrorPage from './error/ErrorPage'
 
 import "./App.css";
 
@@ -51,6 +52,8 @@ class App extends Component {
             user={user}
           />
           <Account path="/account/:user" />
+          <ErrorPage path="/error" />
+          <ErrorPage path="/*" />
         </Router>
       </div>
     );
