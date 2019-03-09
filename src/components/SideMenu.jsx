@@ -1,7 +1,7 @@
 import React from "react";
 import { slide as Menu } from "react-burger-menu";
 import { Link } from "@reach/router";
-import "./SideMenu.css";
+import "../css/SideMenu.css";
 
 function SideMenu({ user, handleLogoutClick }) {
   return (

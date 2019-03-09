@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Router } from "@reach/router";
-import { fetchTopics, fetchUsers } from "./utils/api-requests";
+import { fetchTopicsOrUsers } from "./utils/api-requests";
 import Home from "./components/home/Home";
 import Articles from "./components/articles/Articles";
 import Article from "./components/article/Article";
@@ -8,7 +8,7 @@ import SideMenu from "./components/SideMenu";
 import LoginPage from "./components/login/LoginPage";
 import LoginDashboard from "./components/LoginDashBoard";
 import PostArticlePage from "./components/post-article-page/PostArticlePage";
-import ErrorPage from './error/ErrorPage'
+import ErrorPage from "./components/error/ErrorPage";
 
 import "./App.css";
 
@@ -20,8 +20,8 @@ class App extends Component {
   };
 
   componentDidMount() {
-    fetchTopics().then(topics => this.setState({ topics }));
-    fetchUsers().then(users => this.setState({ users }));
+    fetchTopicsOrUsers("topics").then(topics => this.setState({ topics }));
+    fetchTopicsOrUsers("users").then(users => this.setState({ users }));
   }
 
   render() {
