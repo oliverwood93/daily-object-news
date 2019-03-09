@@ -21,7 +21,7 @@ export const fetchTopicsOrUsers = (topicsOrUsers) => {
 
 
 export const patchVotes = (id, vote, path) => {
-  return request.patch(`/${path}/${id}`, { inc_votes: vote });
+  return request.patch(`${path}/${id}`, { inc_votes: vote });
 };
 
 export const postComment = (id, user, comment) => {
@@ -57,3 +57,7 @@ export const postArticle = newArticleData => {
 export const deleteArticleOrComment = (id, path) => {
   return request.delete(`/${path}/${id}`).then(({ status }) => status);
 };
+
+export const fetchUser = (username) => {
+  return request.get(`/users/${username}`).then(({data: {user}}) => user)
+}

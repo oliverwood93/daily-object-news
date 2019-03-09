@@ -15,12 +15,12 @@ export default class PostArticlePage extends Component {
     isError: false,
   };
   render() {
-    const { user, topics, path } = this.props;
+    const { username, topics, path } = this.props;
     const { topic } = this.state;
 
     return (
       <div>
-        {!user ? (
+        {!username ? (
           <Fragment>
             <p>You must sign-in before you can post an article.</p>
           </Fragment>
@@ -78,14 +78,14 @@ export default class PostArticlePage extends Component {
   };
   handleSubmit = event => {
     event.preventDefault();
-    const { user } = this.props;
+    const { username } = this.props;
     const { slug, description, topic, title, body } = this.state;
     let postingNewArticlePromise = null;
     if (topic === "newTopic") {
       postingNewArticlePromise = postTopic({ slug, description })
-        .then(topic => postArticle({ title, body, topic, author: user }))
+        .then(topic => postArticle({ title, body, topic, author: username }))
         .catch(err => console.dir(err));
-    } else postingNewArticlePromise = postArticle({ title, body, topic, author: user });
+    } else postingNewArticlePromise = postArticle({ title, body, topic, author: username });
     postingNewArticlePromise.then(id => navigate(`/articles/${id}`));
   };
 }

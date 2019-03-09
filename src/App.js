@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Router } from "@reach/router";
-import { fetchTopicsOrUsers } from "./utils/api-requests";
+import { fetchTopicsOrUsers, fetchUser } from "./utils/api-requests";
 import Home from "./components/home/Home";
 import Articles from "./components/articles/Articles";
 import Article from "./components/article/Article";
@@ -15,6 +15,7 @@ import "./App.css";
 class App extends Component {
   state = {
     user: null,
+    username: null,
     topics: [],
     users: []
   };
@@ -25,11 +26,11 @@ class App extends Component {
   }
 
   render() {
-    const { topics, user, users } = this.state;
+    const { topics, user, users, username } = this.state;
     return (
       <div className="App">
         <h1 className="site-header">The Daily Object News</h1>
-        <SideMenu user={user} handleLogoutClick={this.handleLogoutClick} />
+        <SideMenu username={username} handleLogoutClick={this.handleLogoutClick} />
         <Router>
           <LoginDashboard
             path="/*"
@@ -38,13 +39,14 @@ class App extends Component {
             handleLogoutClick={this.handleLogoutClick}
             user={user}
             users={users}
+            username={username}
           />
         </Router>
         <Router className="router">
-          <Home path="/" user={user} />
-          <Articles path="/articles" topics={topics} user={user} />
-          <Article path="/articles/:id" user={user} />
-          <PostArticlePage path="/articles/:username/new_post" user={user} topics={topics} />
+          <Home path="/" username={username} />
+          <Articles path="/articles" topics={topics} username={username} />
+          <Article path="/articles/:id" username={username} />
+          <PostArticlePage path="/articles/:username/new_post" username={username} topics={topics} />
           <LoginPage
             path="/login"
             handleSignInUser={this.handleSignInUser}
@@ -58,11 +60,11 @@ class App extends Component {
     );
   }
   handleSignInUser = event => {
-    const user = event.target.value;
-    this.setState({ user });
+    const userToSignIn = event.target.value;
+    fetchUser(userToSignIn).then(user => this.setState({ user, username: userToSignIn }));
   };
   handleLogoutClick = () => {
-    this.setState({ user: null });
+    this.setState({ user: null, username: null });
   };
 }
 

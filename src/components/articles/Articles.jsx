@@ -30,7 +30,7 @@ class Articles extends Component {
 
   render() {
     const { articles, topic } = this.state;
-    const { handleClick, user, path, topics } = this.props;
+    const { handleClick, username, path, topics } = this.props;
 
     return (
       <div>
@@ -42,7 +42,7 @@ class Articles extends Component {
         <ArticleList
           articles={articles}
           handleClick={handleClick}
-          user={user}
+          username={username}
           handleRemoveItem={this.handleRemoveItem}
         />
       </div>

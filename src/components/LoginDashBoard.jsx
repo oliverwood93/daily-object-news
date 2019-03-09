@@ -9,11 +9,11 @@ export default function LoginDashBoard({
   handleSignInUser,
   user,
   users,
+  username,
   handleLogoutClick
 }) {
   const {pathname} = location
-  const signedInUsersInfo = users.find(({ username }) => username === user);
-  if (pathname !== "/login" && pathname !== `/account/${user}` && !user && pathname !== '/error') {
+  if (pathname !== "/login" && pathname !== `/account/${username}` && !user && pathname !== '/error') {
     return (
       <div className="dash-login">
         <p>Login:</p>{" "}
@@ -25,7 +25,8 @@ export default function LoginDashBoard({
   } else if (user)
     return (
       <UserSignedInDisplay 
-        signedInUsersInfo={signedInUsersInfo}
+        // signedInUsersInfo={signedInUsersInfo}
+        user={user}
         handleLogoutClick={handleLogoutClick}
       />
     );

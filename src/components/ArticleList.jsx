@@ -4,7 +4,7 @@ import ArticleStub from "./ArticleStub";
 import Voter from "./Voter";
 import "../transition.css";
 
-export default function ArticleList({ articles, user, handleRemoveItem }) {
+export default function ArticleList({ articles, username, handleRemoveItem }) {
   return (
     <div>
       <ul>
@@ -12,13 +12,13 @@ export default function ArticleList({ articles, user, handleRemoveItem }) {
           return (
             <li key={article.article_id} className="article-list-item">
               <ArticleStub article={article} />
-              <Voter votes={article.votes} id={article.article_id} path="/articles" user={user} />
+              <Voter votes={article.votes} id={article.article_id} path="/articles" username={username} />
 
               <Link to={`/articles/${article.article_id}`}>
                 <button>more</button>
               </Link>
               <br />
-              {user === article.author && (
+              {username === article.author && (
                 <button onClick={handleRemoveItem} value={article.article_id}>
                   Delete Your Article
                 </button>

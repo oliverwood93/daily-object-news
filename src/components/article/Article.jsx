@@ -27,8 +27,7 @@ export default class Article extends Component {
   }
   render() {
     const { article, isError, isDeleted } = this.state;
-    const { user } = this.props;
-    console.log(this.props)
+    const { username } = this.props;
     if (isError) return <h2>{isError}</h2>;
     if (isDeleted) return <h2>Your Article Has Been Removed</h2>
     else
@@ -36,15 +35,15 @@ export default class Article extends Component {
         <div>
           <ArticleDisplay article={article} />
           <div id="article-page-voter">
-            <Voter votes={article.votes} id={article.article_id} path="/articles" user={user} />
+            <Voter votes={article.votes} id={article.article_id} path="/articles" username={username} />
           </div>
           <br />
-          {user === article.author && (
+          {username === article.author && (
             <button onClick={this.handleRemoveItem} value={article.article_id}>
               Delete Your Article
             </button>
           )}
-          <CommentSection articleId={this.props.id} user={user} />
+          <CommentSection articleId={this.props.id} username={username} />
         </div>
       );
   }

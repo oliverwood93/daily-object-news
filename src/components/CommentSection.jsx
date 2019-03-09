@@ -15,11 +15,11 @@ export default class CommentSection extends Component {
   }
   render() {
     const { comments } = this.state;
-    const { user } = this.props;
+    const { username } = this.props;
     return (
       <Fragment>
-        <NewCommentBox handleBlur={this.handleBlur} handleSubmit={this.handleSubmit} user={user} />
-        <CommentList comments={comments} user={user} handleRemoveItem={this.handleRemoveItem} />
+        <NewCommentBox handleBlur={this.handleBlur} handleSubmit={this.handleSubmit} username={username} />
+        <CommentList comments={comments} username={username} handleRemoveItem={this.handleRemoveItem} />
       </Fragment>
     );
   }
@@ -29,9 +29,9 @@ export default class CommentSection extends Component {
   };
   handleSubmit = event => {
     event.preventDefault();
-    const { articleId, user } = this.props;
+    const { articleId, username } = this.props;
     const { commentToAdd } = this.state;
-    postComment(articleId, user, commentToAdd).then(addedComment =>
+    postComment(articleId, username, commentToAdd).then(addedComment =>
       this.setState(prevState => {
         return { comments: addedComment.concat(prevState.comments) };
       })
