@@ -1,5 +1,4 @@
 import axios from "axios";
-import { navigate } from "@reach/router";
 
 const request = axios.create({ baseURL: "https://oliverwood-news-api.herokuapp.com/api" });
 
@@ -7,16 +6,14 @@ export const fetchArticles = querys => {
   return request.get("/articles", { params: querys }).then(({ data }) => data);
 };
 
-export const fetchArticleById = id => {
-  return request.get(`/articles/${id}`).then(({ data: { article } }) => article);
-};
-
-export const fetchArticleComments = Id => {
-  return request.get(`/articles/${Id}/comments`).then(({ data: { comments } }) => comments);
+export const fetchArticleOrComments = (id, artOrComment) => {
+  return request
+    .get(`/articles/${id}/${artOrComment === "comments" ? "comments" : ""}`)
+    .then(({ data }) => data);
 };
 
 export const fetchTopicsOrUsers = topicsOrUsers => {
-  return request.get(`/${topicsOrUsers}`).then(({ data }) => data[topicsOrUsers]);
+  return request.get(`/${topicsOrUsers}`).then(({ data }) => data);
 };
 
 export const patchVotes = (id, vote, path) => {

@@ -3,8 +3,8 @@ import React from "react";
 export default function SortyBy({ handleSubmit }) {
   return (
     <div>
-      <form onSubmit={handleSubmit}>
-        <select defaultValue="Sort By" label="sort_by">
+      <form onSubmit={handleSubmit} >
+        <select id="sort-by" name="sort-by" defaultValue="Sort By" label="sort_by">
           <option disabled>
             Sort By
           </option>
@@ -12,7 +12,7 @@ export default function SortyBy({ handleSubmit }) {
           <option value="comment_count">Number of Comments</option>
           <option value="votes">Number of Votes</option>
         </select>
-        <select defaultValue="Order">
+        <select id="order" name="order" defaultValue="Order">
           <option disabled>
             Order
           </option>

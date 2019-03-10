@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import NewCommentBox from "./NewCommentBox";
-import { postComment, fetchArticleComments } from "../utils/api-requests";
+import { postComment, fetchArticleOrComments } from "../utils/api-requests";
 import CommentList from "../components/CommentList";
 import { deleteArticleOrComment } from "../utils/api-requests";
 import { navigate } from "@reach/router";
@@ -12,7 +12,8 @@ export default class CommentSection extends Component {
   };
 
   componentDidMount() {
-    fetchArticleComments(this.props.articleId).then(comments => this.setState({ comments }));
+    const {articleId} = this.props
+    fetchArticleOrComments(articleId, 'comments').then(({comments}) => this.setState({ comments }));
   }
   render() {
     const { comments } = this.state;

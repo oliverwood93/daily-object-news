@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { navigate } from "@reach/router";
-import { fetchArticleById, deleteArticleOrComment } from "../../utils/api-requests";
+import { fetchArticleOrComments, deleteArticleOrComment } from "../../utils/api-requests";
 import ArticleDisplay from "../ArticleDisplay";
 import Voter from "../Voter";
 import CommentSection from "../CommentSection";
@@ -8,14 +8,13 @@ import CommentSection from "../CommentSection";
 export default class Article extends Component {
   state = {
     article: [],
-    isDeleted: false,
-    isError: true
+    isDeleted: false
   };
 
   componentDidMount() {
     const { id } = this.props;
-    fetchArticleById(id)
-      .then(article => this.setState({ article }))
+    fetchArticleOrComments(id, "article")
+      .then(({article}) => this.setState({ article }))
       .catch(({ message, response }) => {
         if (message === "Network Error") return navigate("/error", { state: { code: 500 } });
         else
@@ -29,7 +28,7 @@ export default class Article extends Component {
       });
   }
   render() {
-    const { article, isDeleted, isError } = this.state;
+    const { article, isDeleted } = this.state;
     const { username } = this.props;
     if (isDeleted) return <h2>Your Article Has Been Removed</h2>;
     else {

@@ -26,8 +26,8 @@ class App extends Component {
     if (cachedUser) {
       this.setState({ user: cachedUser, username: cachedUser.username });
     }
-    fetchTopicsOrUsers("topics").then(topics => this.setState({ topics }));
-    fetchTopicsOrUsers("users").then(users => this.setState({ users }));
+    fetchTopicsOrUsers("topics").then(({topics}) => this.setState({ topics }));
+    fetchTopicsOrUsers("users").then(({users}) => this.setState({ users }));
   }
 
   render() {

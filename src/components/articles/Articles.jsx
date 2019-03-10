@@ -74,10 +74,11 @@ class Articles extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    const sort_by = event.target[0].value;
-    const order = event.target[1].value;
+    const sort_by = document.getElementById("sort-by").value;
+    const order = document.getElementById("order").value;
     this.setState({ sort_by, order });
   };
+  
   handleRemoveItem = event => {
     const articleToRemoveId = +event.target.value;
     const { path } = this.props;
