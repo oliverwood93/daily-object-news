@@ -15,19 +15,25 @@ class Articles extends Component {
   };
 
   componentDidMount() {
-    fetchArticles().then(({articles, total_count}) => this.setState({ articles, articleCount: total_count }));
+    fetchArticles().then(({ articles, total_count }) =>
+      this.setState({ articles, articleCount: total_count })
+    );
   }
 
   componentDidUpdate(prevProps, prevState) {
     const { topic, sort_by, order, currentPage } = this.state;
-    const queryObj = {};
-    if (topic && topic.slug !== "") queryObj.topic = topic.slug;
-    if (sort_by && sort_by !== "") queryObj.sort_by = sort_by;
-    if (order && order !== "") queryObj.order = order;
-    if (currentPage) queryObj.p = currentPage
-
-    if (prevState.topic !== topic || prevState.sort_by !== sort_by || prevState.order !== order || prevState.currentPage !== currentPage) {
-      fetchArticles(queryObj).then(({articles}) => this.setState({ articles }));
+    if (
+      prevState.topic !== topic ||
+      prevState.sort_by !== sort_by ||
+      prevState.order !== order ||
+      prevState.currentPage !== currentPage
+    ) {
+      fetchArticles({ topic: topic && topic.slug, sort_by, order, p: currentPage }).then(
+        ({ articles, total_count }) => {
+          this.setState({ articles, articleCount: total_count });
+          if (prevState.topic !== topic) this.setState({ currentPage: 1 });
+        }
+      );
     }
   }
 
@@ -38,7 +44,11 @@ class Articles extends Component {
     return (
       <div>
         <h3>Articles</h3>
-        {topic && <h4>{topic.slug} - {topic.description}</h4>}
+        {topic && (
+          <h4>
+            {topic.slug} - {topic.description}
+          </h4>
+        )}
         <TopicSelector topics={topics} handleSelectTopic={this.handleSelectTopic} path={path} />
         <br />
         <SortyBy handleSubmit={this.handleSubmit} />
@@ -55,9 +65,9 @@ class Articles extends Component {
     );
   }
   handleSelectTopic = event => {
-    const { topics } = this.props
+    const { topics } = this.props;
     const slug = event.target.value;
-    const topic = topics.find(topic => topic.slug === slug)
+    const topic = topics.find(topic => topic.slug === slug);
     this.setState({ topic });
   };
 
@@ -71,7 +81,6 @@ class Articles extends Component {
     const articleToRemoveId = +event.target.value;
     const { path } = this.props;
     deleteArticleOrComment(articleToRemoveId, path).then(status => {
-     
       if (status === 204)
         this.setState(({ articles }) => {
           return {

@@ -8,6 +8,7 @@ import "../transition.css";
 export default function ArticleList({ articles, username, handleRemoveItem, handlePageClick, articleCount, page }) {
   return (
     <div>
+      {articleCount <= 0 && <p>There are currently no articles for this topic</p>}
       <ul>
         {articles.map(article => {
           return (
