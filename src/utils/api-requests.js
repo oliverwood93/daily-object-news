@@ -20,14 +20,14 @@ export const patchVotes = (id, vote, path) => {
   return request.patch(`${path}/${id}`, { inc_votes: vote });
 };
 
-export const postComment = (id, user, comment) => {
+export const postComment = (id, username, body) => {
   return request
-    .post(`/articles/${id}/comments`, { username: user, body: comment })
+    .post(`/articles/${id}/comments`, { username, body })
     .then(({ data: { comment } }) => [comment]);
 };
 
-export const postUser = newUserData => {
-  return request.post(`/users`, newUserData).then(({ data: { user } }) => user);
+export const postUserTopicOrArticle = (UserArtOrTop, dataToPost) => {
+  return request.post(`/${UserArtOrTop}`, dataToPost).then(({ data }) => data);
 };
 
 export const postTopic = newTopicData => {

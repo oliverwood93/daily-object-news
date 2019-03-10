@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { navigate } from "@reach/router";
 import TopicSelector from "../TopicSelector";
 import PostNewTopic from "../PostNewTopic";
-import { postTopic, postArticle } from "../../utils/api-requests";
+import { postUserTopicOrArticle } from "../../utils/api-requests";
 import "./PostArticlePage.css";
 
 export default class PostArticlePage extends Component {
@@ -66,7 +66,7 @@ export default class PostArticlePage extends Component {
   // handleCheckTopic = event => {
 
   // }
-  
+
   handleSelectTopic = event => {
     const topic = event.target.value;
     this.setState({ topic });
@@ -93,10 +93,17 @@ export default class PostArticlePage extends Component {
     const { slug, description, topic, title, body } = this.state;
     let newArticlePromise = null;
     if (topic === "newTopic") {
-      newArticlePromise = postTopic({ slug, description }).then(topic =>
-        postArticle({ title, body, topic, author: username })
+      newArticlePromise = postUserTopicOrArticle("topics", { slug, description }).then(
+        ({ topic: { slug } }) =>
+          postUserTopicOrArticle("articles", { title, body, topic: slug, author: username })
       );
-    } else newArticlePromise = postArticle({ title, body, topic, author: username });
-    newArticlePromise.then(id => navigate(`/articles/${id}`));
+    } else
+      newArticlePromise = postUserTopicOrArticle("articles", {
+        title,
+        body,
+        topic,
+        author: username
+      });
+    newArticlePromise.then(({ article: { article_id } }) => navigate(`/articles/${article_id}`));
   };
 }

@@ -40,7 +40,7 @@ export default class CommentSection extends Component {
   handleSubmit = event => {
     event.preventDefault();
     const { articleId, username } = this.props;
-    const { commentToAdd } = this.state;
+    const { commentToAdd }= this.state;
     postComment(articleId, username, commentToAdd)
       .then(addedComment =>
         this.setState(prevState => {

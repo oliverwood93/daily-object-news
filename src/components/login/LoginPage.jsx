@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link } from "@reach/router";
 import UserDropdown from "../UserDropdown";
 import CreateAccountForm from "../CreateAccountForm";
-import { postUser } from "../../utils/api-requests";
+import { postUserTopicOrArticle } from "../../utils/api-requests";
 
 export default class LoginPage extends Component {
   state = {
@@ -66,7 +66,7 @@ export default class LoginPage extends Component {
   handleSubmit = event => {
     event.preventDefault();
     const { userAddSuccessful, ...newUserInfo } = this.state;
-    postUser(newUserInfo).then(user => {
+    postUserTopicOrArticle("users", newUserInfo).then(({user}) => {
       if (user) this.setState({ addedUser: user.username });
     });
   };
