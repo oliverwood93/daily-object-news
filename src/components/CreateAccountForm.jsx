@@ -16,13 +16,19 @@ export default function CreateAccountForm({
           type="text"
           placeholder="Enter Username..."
         />
+        <br />
+        <br />
         <input onChange={handleNameChange} required type="text" placeholder="Enter Name..." />
+        <br />
+        <br />
         <input
           onChange={handleAvartUrlChange}
           required
           type="text"
           placeholder="Upload Avatar Url..."
         />
+        <br />
+        <br />
         <button>Submit</button>
       </form>
     </div>

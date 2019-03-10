@@ -22,7 +22,7 @@ export default function LoginDashBoard({
         <Link to="/login">Or Create Account</Link>
       </div>
     );
-  } else if (user)
+  } else if (user && pathname !== `/account/${username}`)
     return (
       <UserSignedInDisplay 
         // signedInUsersInfo={signedInUsersInfo}

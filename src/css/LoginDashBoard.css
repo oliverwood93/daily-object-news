@@ -1,4 +1,4 @@
-.dash-login {
+/* .dash-login {
   text-align: left;
   margin-left: 50vw;
   padding: 0em 0.1em 0.5em 6em;
@@ -6,18 +6,20 @@
   max-width: 50vw;
   max-height: 10vh;
   font-size: 90;
-}
+} */
 
 .dash-login {
   text-align: left;
-  margin-left: 50vw;
-  padding: 0em 0.1em 0.5em 6em;
+  margin-top: 5px;
+  margin-left: 49vw;
+  margin-right: 10vw;
   border: 2px solid black;
   border-radius: 5%;
-  max-width: 50vw;
+  width: 30vw;
   max-height: 10vh;
 }
 .dash-signed-in {
+  margin-top: 5px;
   text-align: left;
   margin-left: 50vw;
   border: 2px solid black;
@@ -38,10 +40,10 @@
   grid-area: avatar;
 }
 
-.signed-in-message{
+.signed-in-message {
   grid-area: text;
 }
 
-.logout-button{
+.logout-button {
   grid-area: logout;
 }

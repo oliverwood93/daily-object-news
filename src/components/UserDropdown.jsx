@@ -1,8 +1,8 @@
 import React from "react";
 
-export default function UserDropdown({ users, handleSignInUser }) {
+export default function UserDropdown({ users, handleSignInUser}) {
   return (
-    <select defaultValue="Please select Username" onInput={handleSignInUser}>
+    <select defaultValue="Please select Username" onInput={handleSignInUser} >
       <option disabled>
         Please select Username
       </option>

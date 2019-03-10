@@ -1,0 +1,25 @@
+.create-account-form {
+  grid-template-areas:
+    "title-input"
+    "topic-selector"
+    "post-topic-form blank"
+    "article-body";
+}
+
+.title-input {
+  grid-area: title-input;
+  display: inline;
+}
+.topic-selector {
+  grid-area: topic-selector;
+  display: inline;
+}
+.post-topic-form {
+  grid-area: post-topic-form;
+  /* display: inline; */
+  margin-top: 50px;
+}
+.article-body {
+  grid-area: article-body;
+  display: inline;
+}

@@ -12,11 +12,14 @@ export default class LoginPage extends Component {
     addedUser: null
   };
   render() {
-    const { handleSignInUser, users, user } = this.props;
+    const { handleSignInUser, users, user, location } = this.props;
     const { addedUser, name } = this.state;
+    const {userLoggedOut} = location.state
+   
     if (!addedUser && !user) {
       return (
         <div>
+          {userLoggedOut && !user && <p>You have successfully logged out.</p>}
           <h3>Please Login Below:</h3>
           <UserDropdown id="login-dropdown" handleSignInUser={handleSignInUser} users={users} />
           <CreateAccountForm
@@ -30,15 +33,15 @@ export default class LoginPage extends Component {
     } else if (addedUser) {
       return (
         <div>
-          <p>Thank you for creating an account {name}, please click here to go to the home page.</p>
+          <p>Thank you for creating an account {name}, please click here to sign-in.</p>
           <Link to="/">
             <button value={addedUser} onClick={handleSignInUser}>
-              Home Page
+              Sign-In
             </button>
           </Link>
         </div>
       );
-    } else return <p>You have successfully logged in.</p>;
+    } else return <Link to="/"> <p>You have successfully logged in, please click here to go to the home page.</p></Link>
   }
 
   handleUsernameChange = event => {

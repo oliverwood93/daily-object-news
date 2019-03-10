@@ -8,9 +8,11 @@ import SideMenu from "./components/SideMenu";
 import LoginPage from "./components/login/LoginPage";
 import LoginDashboard from "./components/LoginDashBoard";
 import PostArticlePage from "./components/post-article-page/PostArticlePage";
+import Account from "./components/account/Account";
 import ErrorPage from "./components/error/ErrorPage";
-
+import { navigate } from "@reach/router";
 import "./App.css";
+
 
 class App extends Component {
   state = {
@@ -29,7 +31,7 @@ class App extends Component {
     const { topics, user, users, username } = this.state;
     return (
       <div className="App">
-        <h1 className="site-header">The Daily Object News</h1>
+        <h1 className="site-header">The Daily Object News {"{ }"}</h1>
         <SideMenu username={username} handleLogoutClick={this.handleLogoutClick} />
         <Router>
           <LoginDashboard
@@ -46,13 +48,18 @@ class App extends Component {
           <Home path="/" username={username} />
           <Articles path="/articles" topics={topics} username={username} />
           <Article path="/articles/:id" username={username} />
-          <PostArticlePage path="/articles/:username/new_post" username={username} topics={topics} />
+          <PostArticlePage
+            path="/articles/:username/new_post"
+            loggedInUser={username}
+            topics={topics}
+          />
           <LoginPage
             path="/login"
             handleSignInUser={this.handleSignInUser}
             users={users}
             user={user}
           />
+          <Account path="/account/:username" user={user} />
           <ErrorPage path="/error" />
           <ErrorPage path="/*" />
         </Router>
@@ -61,10 +68,18 @@ class App extends Component {
   }
   handleSignInUser = event => {
     const userToSignIn = event.target.value;
-    fetchUser(userToSignIn).then(user => this.setState({ user, username: userToSignIn }));
+    const path = event.target.baseURI
+    fetchUser(userToSignIn).then(user => {
+      this.setState({ user, username: userToSignIn })
+      if (path.includes('/articles/guest/new_post')) {
+        navigate(`/articles/${userToSignIn}/new_post`)
+      }
+    
+    });
   };
   handleLogoutClick = () => {
     this.setState({ user: null, username: null });
+    navigate('/login', {state: {userLoggedOut: true}})
   };
 }
 
