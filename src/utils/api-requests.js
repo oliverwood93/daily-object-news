@@ -3,7 +3,7 @@ import axios from "axios";
 const request = axios.create({ baseURL: "https://oliverwood-news-api.herokuapp.com/api" });
 
 export const fetchArticles = querys => {
-  return request.get("/articles", { params: querys }).then(({ data: { articles } }) => articles);
+  return request.get("/articles", { params: querys }).then(({ data }) => data);
 };
 
 export const fetchArticleById = Id => {

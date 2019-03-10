@@ -2,9 +2,10 @@ import React from "react";
 import { Link } from "@reach/router";
 import ArticleStub from "./ArticleStub";
 import Voter from "./Voter";
+import Paginator from './Paginator'
 import "../transition.css";
 
-export default function ArticleList({ articles, username, handleRemoveItem }) {
+export default function ArticleList({ articles, username, handleRemoveItem, handlePageClick, articleCount, page }) {
   return (
     <div>
       <ul>
@@ -27,6 +28,7 @@ export default function ArticleList({ articles, username, handleRemoveItem }) {
           );
         })}
       </ul>
+      <Paginator page={page} itemCount={articleCount} limit="10" handlePageClick={handlePageClick} />
     </div>
   );
 }

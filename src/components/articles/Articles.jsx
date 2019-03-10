@@ -9,27 +9,30 @@ class Articles extends Component {
     articles: [],
     topic: null,
     sort_by: null,
-    order: null
+    order: null,
+    currentPage: 1,
+    articleCount: null
   };
 
   componentDidMount() {
-    fetchArticles().then(articles => this.setState({ articles }));
+    fetchArticles().then(({articles, total_count}) => this.setState({ articles, articleCount: total_count }));
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const { topic, sort_by, order } = this.state;
+    const { topic, sort_by, order, currentPage } = this.state;
     const queryObj = {};
     if (topic && topic.slug !== "") queryObj.topic = topic.slug;
     if (sort_by && sort_by !== "") queryObj.sort_by = sort_by;
     if (order && order !== "") queryObj.order = order;
+    if (currentPage) queryObj.p = currentPage
 
-    if (prevState.topic !== topic || prevState.sort_by !== sort_by || prevState.order !== order) {
-      fetchArticles(queryObj).then(articles => this.setState({ articles }));
+    if (prevState.topic !== topic || prevState.sort_by !== sort_by || prevState.order !== order || prevState.currentPage !== currentPage) {
+      fetchArticles(queryObj).then(({articles}) => this.setState({ articles }));
     }
   }
 
   render() {
-    const { articles, topic } = this.state;
+    const { articles, topic, currentPage, articleCount } = this.state;
     const { handleClick, username, path, topics } = this.props;
 
     return (
@@ -44,6 +47,9 @@ class Articles extends Component {
           handleClick={handleClick}
           username={username}
           handleRemoveItem={this.handleRemoveItem}
+          page={currentPage}
+          articleCount={articleCount}
+          handlePageClick={this.handlePageClick}
         />
       </div>
     );
@@ -73,6 +79,11 @@ class Articles extends Component {
           };
         });
     });
+  };
+  handlePageClick = event => {
+    const pageDirection = event;
+    const { currentPage } = this.state;
+    this.setState({ currentPage: currentPage + pageDirection });
   };
 }
 

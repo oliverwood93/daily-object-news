@@ -29,13 +29,18 @@ export default class Article extends Component {
     const { article, isError, isDeleted } = this.state;
     const { username } = this.props;
     if (isError) return <h2>{isError}</h2>;
-    if (isDeleted) return <h2>Your Article Has Been Removed</h2>
-    else
+    if (isDeleted) return <h2>Your Article Has Been Removed</h2>;
+    else {
       return (
         <div>
           <ArticleDisplay article={article} />
           <div id="article-page-voter">
-            <Voter votes={article.votes} id={article.article_id} path="/articles" username={username} />
+            <Voter
+              votes={article.votes}
+              id={article.article_id}
+              path="/articles"
+              username={username}
+            />
           </div>
           <br />
           {username === article.author && (
@@ -46,10 +51,11 @@ export default class Article extends Component {
           <CommentSection articleId={this.props.id} username={username} />
         </div>
       );
+    }
   }
   handleRemoveItem = event => {
     const articleToRemoveId = +event.target.value;
-    const path = 'articles'
+    const path = "articles";
     deleteArticleOrComment(articleToRemoveId, path).then(status => {
       if (status === 204) this.setState({ isDeleted: true });
     });

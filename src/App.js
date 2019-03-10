@@ -31,7 +31,6 @@ class App extends Component {
   }
 
   render() {
-    
     const { topics, user, users, username } = this.state;
     return (
       <div className="App">
@@ -63,7 +62,11 @@ class App extends Component {
             users={users}
             user={user}
           />
-          <Account path="/account/:username" user={user} />
+          <Account
+            path="/account/:username"
+            user={user}
+            handleLogoutClick={this.handleLogoutClick}
+          />
           <ErrorPage path="/error" />
           <ErrorPage path="/*" />
         </Router>
@@ -83,7 +86,7 @@ class App extends Component {
   };
   handleLogoutClick = () => {
     this.setState({ user: null, username: null });
-    localStorage.setItem("user", "null")
+    localStorage.setItem("user", "null");
     navigate("/login", { state: { userLoggedOut: true } });
   };
 }

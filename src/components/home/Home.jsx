@@ -8,7 +8,7 @@ class Home extends Component {
   };
 
   componentDidMount() {
-    fetchArticles({ limit: 5 }).then(articles => this.setState({ articles }));
+    fetchArticles({ limit: 5 }).then(({articles}) => this.setState({ articles }));
   }
 
   render() {
