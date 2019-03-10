@@ -13,7 +13,6 @@ import ErrorPage from "./components/error/ErrorPage";
 import { navigate } from "@reach/router";
 import "./App.css";
 
-
 class App extends Component {
   state = {
     user: null,
@@ -23,11 +22,16 @@ class App extends Component {
   };
 
   componentDidMount() {
+    const cachedUser = JSON.parse(localStorage.getItem("user"));
+    if (cachedUser) {
+      this.setState({ user: cachedUser, username: cachedUser.username });
+    }
     fetchTopicsOrUsers("topics").then(topics => this.setState({ topics }));
     fetchTopicsOrUsers("users").then(users => this.setState({ users }));
   }
 
   render() {
+    
     const { topics, user, users, username } = this.state;
     return (
       <div className="App">
@@ -68,18 +72,19 @@ class App extends Component {
   }
   handleSignInUser = event => {
     const userToSignIn = event.target.value;
-    const path = event.target.baseURI
+    const path = event.target.baseURI;
     fetchUser(userToSignIn).then(user => {
-      this.setState({ user, username: userToSignIn })
-      if (path.includes('/articles/guest/new_post')) {
-        navigate(`/articles/${userToSignIn}/new_post`)
+      this.setState({ user, username: userToSignIn });
+      localStorage.setItem("user", JSON.stringify(user));
+      if (path.includes("/articles/guest/new_post")) {
+        navigate(`/articles/${userToSignIn}/new_post`);
       }
-    
     });
   };
   handleLogoutClick = () => {
     this.setState({ user: null, username: null });
-    navigate('/login', {state: {userLoggedOut: true}})
+    localStorage.setItem("user", "null")
+    navigate("/login", { state: { userLoggedOut: true } });
   };
 }
 

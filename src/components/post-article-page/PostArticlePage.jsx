@@ -3,7 +3,7 @@ import { navigate } from "@reach/router";
 import TopicSelector from "../TopicSelector";
 import PostNewTopic from "../PostNewTopic";
 import { postTopic, postArticle } from "../../utils/api-requests";
-import "./PostArticlePage.css"
+import "./PostArticlePage.css";
 
 export default class PostArticlePage extends Component {
   state = {
@@ -28,16 +28,29 @@ export default class PostArticlePage extends Component {
         <div className="create-account-form">
           <form onSubmit={this.handleSubmit}>
             Title:{" "}
-            <input className="title-input" onChange={this.handleTitleChange} name="title-input" type="text" required />
+            <input
+              className="title-input"
+              onChange={this.handleTitleChange}
+              name="title-input"
+              type="text"
+              required
+            />
             <br />
-            <TopicSelector className="topic-selector" topics={topics} path={path} handleSelectTopic={this.handleSelectTopic} />
+            <TopicSelector
+              className="topic-selector"
+              topics={topics}
+              path={path}
+              handleSelectTopic={this.handleSelectTopic}
+            />
             {topic === "newTopic" && (
-              <PostNewTopic className="post-topic-form"
+              <PostNewTopic
+                className="post-topic-form"
                 handleNameChange={this.handleTopicNameChange}
                 handleDescriptionChange={this.handleTopicDescriptionChange}
               />
             )}
-            <textarea className="article-body"
+            <textarea
+              className="article-body"
               required
               onChange={this.handleBodyChange}
               name="article-body"
@@ -72,7 +85,7 @@ export default class PostArticlePage extends Component {
   };
   handleSubmit = event => {
     event.preventDefault();
-    const { username } = this.props.loggedInUser;
+    const username = this.props.loggedInUser;
     const { slug, description, topic, title, body } = this.state;
     let postingNewArticlePromise = null;
     if (topic === "newTopic") {

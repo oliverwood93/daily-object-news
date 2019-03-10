@@ -14,8 +14,8 @@ export default class LoginPage extends Component {
   render() {
     const { handleSignInUser, users, user, location } = this.props;
     const { addedUser, name } = this.state;
-    const {userLoggedOut} = location.state
-   
+    const { userLoggedOut } = location.state;
+
     if (!addedUser && !user) {
       return (
         <div>
@@ -41,7 +41,13 @@ export default class LoginPage extends Component {
           </Link>
         </div>
       );
-    } else return <Link to="/"> <p>You have successfully logged in, please click here to go to the home page.</p></Link>
+    } else
+      return (
+        <Link to="/">
+          {" "}
+          <p>You have successfully logged in, please click here to go to the home page.</p>
+        </Link>
+      );
   }
 
   handleUsernameChange = event => {
