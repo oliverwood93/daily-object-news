@@ -8,6 +8,7 @@ export default function ArticleStub({ article }) {
       <DatePosted createdAt={article.created_at} />
       <p>{article.author}</p>
       <p>{article.topic}</p>
+      <p>{article.body.slice(0, 160)}...</p>
       <p>Comments: {article.comment_count}</p>
     </article>
   );
