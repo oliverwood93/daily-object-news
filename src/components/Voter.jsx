@@ -6,12 +6,6 @@ export default class Voter extends Component {
     changedVote: 0
   };
 
-  // componentDidUpdate(prevProps){
-  //   if (prevProps.user !== this.props.user) {
-  //     this.render()
-  //   }
-  // }
-
   render() {
     const { votes, username } = this.props;
     const { changedVote } = this.state;
@@ -35,7 +29,7 @@ export default class Voter extends Component {
   }
   handleVoteClick = vote => {
     const { id, path } = this.props;
-    patchVotes(id, vote, path);
+    patchVotes(id, vote, path)
     this.setState(prevState => {
       return {
         changedVote: prevState.changedVote + vote

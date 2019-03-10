@@ -5,7 +5,7 @@ import Voter from "./Voter";
 import Paginator from './Paginator'
 import "../transition.css";
 
-export default function ArticleList({ articles, username, handleRemoveItem, handlePageClick, articleCount, page }) {
+export default function ArticleList({ articles, username, handleRemoveItem, handlePageClick, articleCount, page, path }) {
   return (
     <div>
       {articleCount <= 0 && <p>There are currently no articles for this topic</p>}
@@ -20,7 +20,7 @@ export default function ArticleList({ articles, username, handleRemoveItem, hand
                 <button>more</button>
               </Link>
               <br />
-              {username === article.author && (
+              {path !== '/' && username === article.author && (
                 <button onClick={handleRemoveItem} value={article.article_id}>
                   Delete Your Article
                 </button>

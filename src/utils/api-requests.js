@@ -1,4 +1,5 @@
 import axios from "axios";
+import { navigate } from "@reach/router";
 
 const request = axios.create({ baseURL: "https://oliverwood-news-api.herokuapp.com/api" });
 
@@ -6,19 +7,17 @@ export const fetchArticles = querys => {
   return request.get("/articles", { params: querys }).then(({ data }) => data);
 };
 
-export const fetchArticleById = Id => {
-  return request.get(`/articles/${Id}`).then(({ data: { article } }) => article);
+export const fetchArticleById = id => {
+  return request.get(`/articles/${id}`).then(({ data: { article } }) => article);
 };
 
 export const fetchArticleComments = Id => {
   return request.get(`/articles/${Id}/comments`).then(({ data: { comments } }) => comments);
 };
 
-export const fetchTopicsOrUsers = (topicsOrUsers) => {
-
+export const fetchTopicsOrUsers = topicsOrUsers => {
   return request.get(`/${topicsOrUsers}`).then(({ data }) => data[topicsOrUsers]);
 };
-
 
 export const patchVotes = (id, vote, path) => {
   return request.patch(`${path}/${id}`, { inc_votes: vote });
@@ -55,9 +54,9 @@ export const postArticle = newArticleData => {
 };
 
 export const deleteArticleOrComment = (id, path) => {
-  return request.delete(`/${path}/${id}`).then(({ status }) => status);
+  return request.delete(`${path}/${id}`).then(({ status }) => status);
 };
 
-export const fetchUser = (username) => {
-  return request.get(`/users/${username}`).then(({data: {user}}) => user)
-}
+export const fetchUser = username => {
+  return request.get(`/users/${username}`).then(({ data: { user } }) => user);
+};

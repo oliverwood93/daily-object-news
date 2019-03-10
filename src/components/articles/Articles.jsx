@@ -3,6 +3,7 @@ import { fetchArticles, deleteArticleOrComment } from "../../utils/api-requests"
 import TopicSelector from "../TopicSelector";
 import ArticleList from "../ArticleList";
 import SortyBy from "../SortyBy";
+import { navigate } from "@reach/router";
 
 class Articles extends Component {
   state = {
@@ -80,14 +81,24 @@ class Articles extends Component {
   handleRemoveItem = event => {
     const articleToRemoveId = +event.target.value;
     const { path } = this.props;
-    deleteArticleOrComment(articleToRemoveId, path).then(status => {
-      if (status === 204)
-        this.setState(({ articles }) => {
-          return {
-            articles: articles.filter(article => article.article_id !== articleToRemoveId)
-          };
-        });
-    });
+    deleteArticleOrComment(articleToRemoveId, path)
+      .then(status => {
+        if (status === 204)
+          this.setState(({ articles }) => {
+            return {
+              articles: articles.filter(article => article.article_id !== articleToRemoveId)
+            };
+          });
+      })
+      .catch(({ response }) =>
+        navigate("/error", {
+          state: {
+            code: response.status,
+            message: response.data,
+            fromPath: path
+          }
+        })
+      );
   };
   handlePageClick = event => {
     const pageDirection = event;

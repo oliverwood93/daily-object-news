@@ -63,6 +63,10 @@ export default class PostArticlePage extends Component {
         </div>
       );
   }
+  // handleCheckTopic = event => {
+
+  // }
+  
   handleSelectTopic = event => {
     const topic = event.target.value;
     this.setState({ topic });
@@ -87,12 +91,12 @@ export default class PostArticlePage extends Component {
     event.preventDefault();
     const username = this.props.loggedInUser;
     const { slug, description, topic, title, body } = this.state;
-    let postingNewArticlePromise = null;
+    let newArticlePromise = null;
     if (topic === "newTopic") {
-      postingNewArticlePromise = postTopic({ slug, description })
-        .then(topic => postArticle({ title, body, topic, author: username }))
-        .catch(err => console.dir(err));
-    } else postingNewArticlePromise = postArticle({ title, body, topic, author: username });
-    postingNewArticlePromise.then(id => navigate(`/articles/${id}`));
+      newArticlePromise = postTopic({ slug, description }).then(topic =>
+        postArticle({ title, body, topic, author: username })
+      );
+    } else newArticlePromise = postArticle({ title, body, topic, author: username });
+    newArticlePromise.then(id => navigate(`/articles/${id}`));
   };
 }

@@ -13,11 +13,11 @@ class Home extends Component {
 
   render() {
     const { articles } = this.state;
-    const { handleClick, username } = this.props;
+    const { handleClick, username, path } = this.props;
     return (
       <div>
         <h3>Home: Latest News</h3>
-        <ArticleList articles={articles} handleClick={handleClick} username={username}/>
+        <ArticleList articles={articles} handleClick={handleClick} username={username} path={path}/>
       </div>
     );
   }

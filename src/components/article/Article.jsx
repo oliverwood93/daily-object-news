@@ -8,27 +8,29 @@ import CommentSection from "../CommentSection";
 export default class Article extends Component {
   state = {
     article: [],
-    isDeleted: false
+    isDeleted: false,
+    isError: true
   };
+
   componentDidMount() {
     const { id } = this.props;
     fetchArticleById(id)
       .then(article => this.setState({ article }))
-      .catch(({ response }) =>
-        navigate("/error", {
-          replace: true,
-          state: {
-            code: response.status,
-            message: response.data,
-            fromPath: `/articles/${id}`
-          }
-        })
-      );
+      .catch(({ message, response }) => {
+        if (message === "Network Error") return navigate("/error", { state: { code: 500 } });
+        else
+          navigate("/error", {
+            replace: true,
+            state: {
+              code: response.status,
+              message: response.data
+            }
+          });
+      });
   }
   render() {
-    const { article, isError, isDeleted } = this.state;
+    const { article, isDeleted, isError } = this.state;
     const { username } = this.props;
-    if (isError) return <h2>{isError}</h2>;
     if (isDeleted) return <h2>Your Article Has Been Removed</h2>;
     else {
       return (
@@ -56,8 +58,18 @@ export default class Article extends Component {
   handleRemoveItem = event => {
     const articleToRemoveId = +event.target.value;
     const path = "articles";
-    deleteArticleOrComment(articleToRemoveId, path).then(status => {
-      if (status === 204) this.setState({ isDeleted: true });
-    });
+    deleteArticleOrComment(articleToRemoveId, path)
+      .then(status => {
+        if (status === 204) this.setState({ isDeleted: true });
+      })
+      .catch(({ response }) =>
+        navigate("/error", {
+          state: {
+            code: response.status,
+            message: response.data,
+            fromPath: path
+          }
+        })
+      );
   };
 }
