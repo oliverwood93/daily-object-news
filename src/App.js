@@ -11,6 +11,7 @@ import PostArticlePage from "./components/post-article-page/PostArticlePage";
 import Account from "./components/account/Account";
 import ErrorPage from "./components/error/ErrorPage";
 import { navigate } from "@reach/router";
+import Header from "./components/Header";
 import "./App.css";
 
 class App extends Component {
@@ -26,27 +27,22 @@ class App extends Component {
     if (cachedUser) {
       this.setState({ user: cachedUser, username: cachedUser.username });
     }
-    fetchTopicsOrUsers("topics").then(({topics}) => this.setState({ topics }));
-    fetchTopicsOrUsers("users").then(({users}) => this.setState({ users }));
+    fetchTopicsOrUsers("topics").then(({ topics }) => this.setState({ topics }));
+    fetchTopicsOrUsers("users").then(({ users }) => this.setState({ users }));
   }
 
   render() {
     const { topics, user, users, username } = this.state;
     return (
       <div className="App">
-        <h1 className="site-header">The Daily Object News {"{ }"}</h1>
+        <Header
+          user={user}
+          users={users}
+          username={username}
+          handleLogoutClick={this.handleLogoutClick}
+          handleSignInUser={this.handleSignInUser}
+        />
         <SideMenu username={username} handleLogoutClick={this.handleLogoutClick} />
-        <Router>
-          <LoginDashboard
-            path="/*"
-            className="login-dashboard"
-            handleSignInUser={this.handleSignInUser}
-            handleLogoutClick={this.handleLogoutClick}
-            user={user}
-            users={users}
-            username={username}
-          />
-        </Router>
         <Router className="router">
           <Home path="/" username={username} />
           <Articles path="/articles" topics={topics} username={username} />
@@ -74,7 +70,7 @@ class App extends Component {
     );
   }
   handleSignInUser = (event, path) => {
-    const userToSignIn = event
+    const userToSignIn = event;
     fetchUser(userToSignIn).then(user => {
       this.setState({ user, username: userToSignIn });
       localStorage.setItem("user", JSON.stringify(user));

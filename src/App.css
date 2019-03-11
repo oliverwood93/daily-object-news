@@ -4,6 +4,7 @@
   max-width: 100%;
 }
 
+
 .comment-list {
   list-style: none;
 }
@@ -17,8 +18,7 @@
   width: 5rem;
   height: 34rem;
 }
-.article-containers {
-}
+
 
 button {
   margin: 2px 2px auto 2px;
@@ -33,46 +33,41 @@ select {
   margin: 2px 40px 2px 40px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.header-container {
+  width: 100%;
+  height: 8vh;
+  background-color: black;
+  display: grid;
+  grid-template-columns: 1.6fr 0.3fr;
+  grid-template-rows: 1fr ;
+  grid-template-areas: "header login-icon ";
+}
+
+.site-header{
+  grid-area: header;
   color: white;
+  margin-top: 2vh;
+  margin-left: 4vw
 }
-
-h1 {
-  all: unset;
+.login-icon{
+  grid-area: login-icon;
+  height: 6vh;
+  width: auto;
+  border: 2px solid greenyellow;
+  border-radius: 50%;
+  background-color: white;
+  margin-top: 1vh;
+  margin-left: 1vw;
 }
-
-.site-header {
-  text-align: auto;
-  width: 100vw;
-  /* margin-right: 2em; */
-  /* margin-top: 1em;
-  margin-left: 14%; */
-  /* color: whitesmoke;
-  background-color: #8b8b8b;
-  font-size: 2em;
-  */
-  /* display: inline-block;  */
-  border-bottom: 0.5vh solid black;
-  color: #f2f2f2;
-  background: grey;
-  font-size: 3vw;
-  line-height: 74px;
-  font-weight: 600;
-  /* margin: 0px 0px 0px; */
-  padding-left: 1vw;
-  padding-top: 5px;
-  /* float: left; */
-  display: block;
-  /* padding: 1px; */
-  /* margin: 0 1px 10px; */
-  font-family: "Libre Baskerville", serif;
+.user-avatar {
+    grid-area: login-icon;
+  height: 6vh;
+  width: auto;
+  border: 2px solid greenyellow;
+  border-radius: 50%;
+  background-color: white;
+  margin-top: 1vh;
+  margin-left: 1vw;
 }
 @media only screen and (max-width: 500px) {
   .site-header {

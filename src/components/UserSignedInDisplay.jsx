@@ -1,16 +1,24 @@
 import React from "react";
-import UserAvatar from "./UserAvatar";
-import {Badge, Button} from 'react-bootstrap';
+import { Button, Modal } from "react-bootstrap";
+import { Link } from "@reach/router";
 
-export default function UserSignedInDisplay({ user, handleLogoutClick }) {
-  const { username, avatar_url } = user;
+export default function UserSignedInDisplay({ user, handleLogoutClick, show, toggleModal }) {
+  const { username } = user;
   return (
-    <Badge pill variant="dark" className="dash-signed-in">
-      <p className="signed-in-message">Signed in as: {username}</p>
-      <UserAvatar username={username} avatar_url={avatar_url} />
-      <Button className="logout-button" onClick={handleLogoutClick}>
-        Log Out
-      </Button>
-    </Badge>
+    <Modal show={show} onHide={toggleModal}>
+      <Modal.Header closeButton>
+        <Modal.Title id="signed-in-text">Signed in as: {username}</Modal.Title>
+      </Modal.Header>
+      <Modal.Footer>
+        <Button className="logout-button" onClick={handleLogoutClick}>
+          <span onClick={toggleModal}>Log Out</span>
+        </Button>
+        <Link to={`/account/${username}`}>
+        <Button className="account-button">
+          <span onClick={toggleModal}>My Account</span> 
+        </Button>
+        </Link> 
+      </Modal.Footer>
+    </Modal>
   );
 }

@@ -1,8 +1,8 @@
 import React from "react";
 
-export default function UserAvatar({username, avatar_url}) {
+export default function UserAvatar({ username, avatar_url, toggleModal}) {
   return (
-    <img className="user-avatar"
+    <img onClick={toggleModal} className="user-avatar"
       src={avatar_url}
       alt={`${username}'s avatar`}
       onError={e => {
