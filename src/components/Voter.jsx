@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { patchVotes } from "../utils/api-requests";
+import Button from 'react-bootstrap/Button'
 
 export default class Voter extends Component {
   state = {
@@ -12,18 +13,18 @@ export default class Voter extends Component {
     return (
       <div>
         <p>Votes: {votes + changedVote}</p>
-        <button
+        <Button
           disabled={!username}
           onClick={() => this.handleVoteClick(changedVote === -1 ? 1 : -1)}
         >
           Down Vote
-        </button>
-        <button
+        </Button>
+        <Button
           disabled={!username}
           onClick={() => this.handleVoteClick(changedVote === 1 ? -1 : 1)}
         >
           Up Vote
-        </button>
+        </Button>
       </div>
     );
   }

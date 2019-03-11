@@ -1,4 +1,5 @@
 import React from "react";
+import Button from 'react-bootstrap/Button'
 
 export default function CreateAccountForm({
   handleSubmit,
@@ -29,7 +30,7 @@ export default function CreateAccountForm({
         />
         <br />
         <br />
-        <button>Submit</button>
+        <Button variant="success" >Submit</Button>
       </form>
     </div>
   );

@@ -3,6 +3,7 @@ import UserAvatar from "../UserAvatar";
 import "./Account.css";
 import { fetchArticles } from "../../utils/api-requests";
 import UserArticles from "../UserArticles";
+import {Button} from 'react-bootstrap'
 
 export default class Account extends Component {
   state = {
@@ -42,9 +43,9 @@ export default class Account extends Component {
           <h3>
             {username} - {name}
           </h3>
-          <button className="logout-button" onClick={handleLogoutClick}>
+          <Button className="logout-button" onClick={handleLogoutClick}>
             Log Out
-          </button>
+          </Button>
           <hr />
           <UserArticles
             articleCount={articleCount}

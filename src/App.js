@@ -73,9 +73,8 @@ class App extends Component {
       </div>
     );
   }
-  handleSignInUser = event => {
-    const userToSignIn = event.target.value;
-    const path = event.target.baseURI;
+  handleSignInUser = (event, path) => {
+    const userToSignIn = event
     fetchUser(userToSignIn).then(user => {
       this.setState({ user, username: userToSignIn });
       localStorage.setItem("user", JSON.stringify(user));

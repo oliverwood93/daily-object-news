@@ -1,18 +1,16 @@
 import React from "react";
+import { Dropdown, DropdownButton } from "react-bootstrap";
 
-export default function UserDropdown({ users, handleSignInUser}) {
+export default function UserDropdown({ users, handleSignInUser, path, id }) {
   return (
-    <select defaultValue="Please select Username" onInput={handleSignInUser} >
-      <option disabled>
-        Please select Username
-      </option>
-      {users.map(({username}) => {
+    <DropdownButton id={id} drop="down"  variant="light" onSelect={(e) => handleSignInUser(e, path)} title="Please Select Username" >
+      {users.map(({ username }) => {
         return (
-          <option key={username} value={username}>
+          <Dropdown.Item eventKey={username} key={username}>
             {username}
-          </option>
+          </Dropdown.Item>
         );
       })}
-    </select>
+    </DropdownButton>
   );
 }

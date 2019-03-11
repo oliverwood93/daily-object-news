@@ -4,6 +4,7 @@ import { fetchArticleOrComments, deleteArticleOrComment } from "../../utils/api-
 import ArticleDisplay from "../ArticleDisplay";
 import Voter from "../Voter";
 import CommentSection from "../CommentSection";
+import { Button } from "react-bootstrap";
 
 export default class Article extends Component {
   state = {
@@ -14,7 +15,7 @@ export default class Article extends Component {
   componentDidMount() {
     const { id } = this.props;
     fetchArticleOrComments(id, "article")
-      .then(({article}) => this.setState({ article }))
+      .then(({ article }) => this.setState({ article }))
       .catch(({ message, response }) => {
         if (message === "Network Error") return navigate("/error", { state: { code: 500 } });
         else
@@ -45,9 +46,9 @@ export default class Article extends Component {
           </div>
           <br />
           {username === article.author && (
-            <button onClick={this.handleRemoveItem} value={article.article_id}>
+            <Button variant="danger" onClick={this.handleRemoveItem} value={article.article_id}>
               Delete Your Article
-            </button>
+            </Button>
           )}
           <CommentSection articleId={this.props.id} username={username} />
         </div>

@@ -2,34 +2,54 @@ import React from "react";
 import { Link } from "@reach/router";
 import ArticleStub from "./ArticleStub";
 import Voter from "./Voter";
-import Paginator from './Paginator'
-import "../transition.css";
+import Paginator from "./Paginator";
+import { Card, Button } from "react-bootstrap";
 
-export default function ArticleList({ articles, username, handleRemoveItem, handlePageClick, articleCount, page, path }) {
+export default function ArticleList({
+  articles,
+  username,
+  handleRemoveItem,
+  handlePageClick,
+  articleCount,
+  page,
+  path
+}) {
   return (
     <div>
       {articleCount <= 0 && <p>There are currently no articles for this topic</p>}
-      <ul>
         {articles.map(article => {
           return (
-            <li key={article.article_id} className="article-list-item">
-              <ArticleStub article={article} />
-              <Voter votes={article.votes} id={article.article_id} path="/articles" username={username} />
+            <Card key={article.article_id} className="article-list-item" >
+              <Card.Body>
+                <ArticleStub article={article} />
+              <Voter
+                votes={article.votes}
+                id={article.article_id}
+                path="/articles"
+                username={username}
+              />
+              <hr />
 
               <Link to={`/articles/${article.article_id}`}>
-                <button>more</button>
+                <Button>more</Button>
               </Link>
               <br />
-              {path !== '/' && username === article.author && (
-                <button onClick={handleRemoveItem} value={article.article_id}>
+              {path !== "/" && username === article.author && (
+                <Button variant="danger" onClick={handleRemoveItem} value={article.article_id}>
                   Delete Your Article
-                </button>
+                </Button>
               )}
-            </li>
+              </Card.Body>
+            </Card>
+            // </li>
           );
         })}
-      </ul>
-      <Paginator page={page} itemCount={articleCount} limit="10" handlePageClick={handlePageClick} />
+      <Paginator
+        page={page}
+        itemCount={articleCount}
+        limit="10"
+        handlePageClick={handlePageClick}
+      />
     </div>
   );
 }
