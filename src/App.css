@@ -1,9 +1,7 @@
 .App {
   text-align: center;
-
-  max-width: 100%;
+  max-height: 100%;
 }
-
 
 .comment-list {
   list-style: none;
@@ -12,11 +10,6 @@
 .article-display {
   border: 2px solid black;
   margin: 10px 40px 10px 40px;
-}
-
-.article-list-item {
-  width: 5rem;
-  height: 34rem;
 }
 
 
@@ -39,28 +32,28 @@ select {
   background-color: black;
   display: grid;
   grid-template-columns: 1.6fr 0.3fr;
-  grid-template-rows: 1fr ;
+  grid-template-rows: 1fr;
   grid-template-areas: "header login-icon ";
 }
 
-.site-header{
+.site-header {
   grid-area: header;
   color: white;
   margin-top: 2vh;
-  margin-left: 4vw
+  margin-left: 4vw;
 }
-.login-icon{
+.login-icon {
   grid-area: login-icon;
   height: 6vh;
   width: auto;
-  border: 2px solid greenyellow;
+  border: 2px solid red;
   border-radius: 50%;
   background-color: white;
   margin-top: 1vh;
   margin-left: 1vw;
 }
 .user-avatar {
-    grid-area: login-icon;
+  grid-area: login-icon;
   height: 6vh;
   width: auto;
   border: 2px solid greenyellow;

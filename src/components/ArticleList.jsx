@@ -15,11 +15,11 @@ export default function ArticleList({
   path
 }) {
   return (
-    <div>
+    <div className="articles-container">
       {articleCount <= 0 && <p>There are currently no articles for this topic</p>}
         {articles.map(article => {
           return (
-            <Card key={article.article_id} className="article-list-item" >
+            <Card key={article.article_id} className="article-list-card" >
               <Card.Body>
                 <ArticleStub article={article} />
               <Voter

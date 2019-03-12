@@ -4,6 +4,7 @@ import TopicSelector from "../TopicSelector";
 import ArticleList from "../ArticleList";
 import SortyBy from "../SortyBy";
 import { navigate } from "@reach/router";
+import './Articles.css'
 
 class Articles extends Component {
   state = {
@@ -45,14 +46,18 @@ class Articles extends Component {
     return (
       <div>
         <h3>Articles</h3>
-        {topic && (
-          <h4>
+        {topic ? (
+          <h5>
             {topic.slug} - {topic.description}
-          </h4>
-        )}
+          </h5>
+        ) : (
+          <h5>All Articles</h5>
+        )
+        }
+        <div className="refine-articles-container">
         <TopicSelector topics={topics} handleSelectTopic={this.handleSelectTopic} path={path} />
-        <br />
         <SortyBy handleSubmit={this.handleSubmit} />
+        </div>
         <ArticleList
           articles={articles}
           handleClick={handleClick}

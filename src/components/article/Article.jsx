@@ -5,6 +5,7 @@ import ArticleDisplay from "../ArticleDisplay";
 import Voter from "../Voter";
 import CommentSection from "../CommentSection";
 import { Button } from "react-bootstrap";
+import './Article.css'
 
 export default class Article extends Component {
   state = {

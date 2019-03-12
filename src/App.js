@@ -35,6 +35,7 @@ class App extends Component {
     const { topics, user, users, username } = this.state;
     return (
       <div className="App">
+        <SideMenu username={username} handleLogoutClick={this.handleLogoutClick} />
         <Header
           user={user}
           users={users}
@@ -42,7 +43,6 @@ class App extends Component {
           handleLogoutClick={this.handleLogoutClick}
           handleSignInUser={this.handleSignInUser}
         />
-        <SideMenu username={username} handleLogoutClick={this.handleLogoutClick} />
         <Router className="router">
           <Home path="/" username={username} />
           <Articles path="/articles" topics={topics} username={username} />

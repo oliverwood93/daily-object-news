@@ -25,7 +25,7 @@ export default class PostArticlePage extends Component {
       );
     } else
       return (
-        <div className="create-account-form">
+        <div className="create-account-form" >
           <form onSubmit={this.handleSubmit}>
             Title:{" "}
             <input
