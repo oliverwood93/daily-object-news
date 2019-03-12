@@ -38,7 +38,7 @@ export default class Article extends Component {
         <div>
           <ArticleDisplay article={article} />
           <div id="article-page-voter">
-            <Voter
+            <Voter className="voter-article-list"
               votes={article.votes}
               id={article.article_id}
               path="/articles"

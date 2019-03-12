@@ -6,11 +6,11 @@ export default function ArticleStub({ article }) {
   return (
     <Fragment>
       <Card.Title>{article.title}</Card.Title>
-      <DatePosted createdAt={article.created_at} />
-      <Card.Text>{article.author}</Card.Text>
-      <Card.Text>{article.topic}</Card.Text>
+      <Card.Subtitle className="topic-title-onstub">{article.topic}</Card.Subtitle>
+      <DatePosted className="date-article-list" createdAt={article.created_at} />
       <Card.Text>{article.body.slice(0, 160)}...</Card.Text>
-      <Card.Text>Comments: {article.comment_count}</Card.Text>
+      <Card.Text className="author-onstub">- By {article.author}</Card.Text>
+      <hr/>
     </Fragment>
   );
 }

@@ -1,42 +1,68 @@
-.refine-articles-container {
+/* .refine-articles-container {
   border: 3px solid black;
   border-radius: 5%;
   width: 98vw;
   margin: auto;
   align-content: center;
   height: 8.5vh;
-}
+} */
 
+.articles-header-container {
+  width: 98vw;
+  margin-top: 1vh;
+  margin-left: 1vw;
+}
+.articles-filter-container {
+justify-content: center;
+}
 .topic-selector {
-  display: inline-block;
-  margin-right: 46vw;
+  display: flexbox;
+  margin-bottom: 1vh; 
   width: 50vw;
   height: 3vh;
+  float: left;
+  /* grid-area: filter; */
 }
+/* .sort-order-container{
+  
+  display: flexbox;
 
-.sort-order-container {
-  margin-top: 0.5vh;
-  display: flex;
-  width: 60vw;
-  height: 5vh;
-
-}
-
-.sort-order-container > #sort-by {
-  width: 30vw;
+} */
+#sort-by {
+  display: flexbox;
+  width: 20vw;
   height: 3vh;
+  float: left;
 }
-
-.sort-order-container > #order {
-  width: 30vw;
+#order {
+  display: flexbox;
+  width: 20vw;
   height: 3vh;
+  float: left;
+}
+#sort-button {
+  display: grid;
+  /* height: 3vh; */
+  /* margin-top: 1vh;
+  margin-bottom: 1vh; */
+  align-content: center;
 }
 
-.sort-order-container > #sort-button {
-height: 3vh;
-margin: 0 0 2vw;
-font-size: 10px;
-line-height: 0px;
+.articles-header {
+  font-size: 1.5rem;
+  margin: 0;
+  display: grid;
+  align-content: center;
+  justify-content: left;
+}
+
+.articles-topic-subheader {
+  font-size: 1rem;
+  align-content: center;
+  margin-left: 6vw;
+  margin-bottom: 0;
+  display: grid;
+  justify-content: left;
 }
 
 .articles-container {
@@ -48,4 +74,76 @@ line-height: 0px;
   margin-bottom: 0.5vh;
 }
 
+.short-date {
+  overflow: hidden;
+  text-align: center;
+  font-size: 0.8rem;
+}
+.short-date:before,
+.short-date:after {
+  background-color: #333;
+  content: "";
+  display: inline-block;
+  height: 0.5px;
+  position: relative;
+  vertical-align: middle;
+  width: 50%;
+}
+.short-date:before {
+  right: 0.5em;
+  margin-left: -20%;
+}
+.short-date:after {
+  left: 0.5em;
+  margin-right: -60%;
+}
 
+.author-onstub {
+  font-size: 0.8rem;
+  display: flexbox;
+  text-align: right;
+}
+.topic-title-onstub {
+  margin-bottom: 1.5vh;
+  font-style: italic;
+}
+.comment-vote-list-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: "vote .. comment" "upvote more downvote";
+}
+
+.comment-count-list {
+  grid-area: comment;
+  display: grid;
+  width: 30vw;
+  margin-bottom: 2vh;
+}
+
+.vote-count-list {
+  grid-area: vote;
+  display: grid;
+  width: 30vw;
+  margin-bottom: 2vh;
+}
+.upvote-button-list {
+  display: grid;
+  grid-area: upvote;
+  /* width: 29vw;
+justify-content: center; */
+}
+.downvote-button-list {
+  display: grid;
+  grid-area: downvote;
+  /* width: 29vw;
+  text-align: center; */
+}
+.more-button {
+  display: grid;
+  grid-area: more;
+}
+
+.btn:focus {
+  outline: none;
+}

@@ -4,7 +4,8 @@ import TopicSelector from "../TopicSelector";
 import ArticleList from "../ArticleList";
 import SortyBy from "../SortyBy";
 import { navigate } from "@reach/router";
-import './Articles.css'
+import "./Articles.css";
+import { Card } from "react-bootstrap";
 
 class Articles extends Component {
   state = {
@@ -45,19 +46,24 @@ class Articles extends Component {
 
     return (
       <div>
-        <h3>Articles</h3>
-        {topic ? (
-          <h5>
-            {topic.slug} - {topic.description}
-          </h5>
-        ) : (
-          <h5>All Articles</h5>
-        )
-        }
-        <div className="refine-articles-container">
-        <TopicSelector topics={topics} handleSelectTopic={this.handleSelectTopic} path={path} />
-        <SortyBy handleSubmit={this.handleSubmit} />
-        </div>
+        <Card className="articles-header-container">
+          <Card.Header>
+            <h2 className="articles-header">Articles</h2>
+          </Card.Header>
+          <Card.Title>
+            {topic ? (
+              <p className="articles-topic-subheader">
+                {topic.slug} - {topic.description}
+              </p>
+            ) : (
+              <p className="articles-topic-subheader">All Articles</p>
+            )}
+          </Card.Title>
+          <div className="articles-filter-container">
+            <TopicSelector topics={topics} handleSelectTopic={this.handleSelectTopic} path={path} />
+            <SortyBy handleSubmit={this.handleSubmit} />
+          </div>
+        </Card>
         <ArticleList
           articles={articles}
           handleClick={handleClick}
@@ -83,7 +89,7 @@ class Articles extends Component {
     const order = document.getElementById("order").value;
     this.setState({ sort_by, order });
   };
-  
+
   handleRemoveItem = event => {
     const articleToRemoveId = +event.target.value;
     const { path } = this.props;

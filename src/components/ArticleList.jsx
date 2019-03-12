@@ -17,33 +17,34 @@ export default function ArticleList({
   return (
     <div className="articles-container">
       {articleCount <= 0 && <p>There are currently no articles for this topic</p>}
-        {articles.map(article => {
-          return (
-            <Card key={article.article_id} className="article-list-card" >
-              <Card.Body>
-                <ArticleStub article={article} />
-              <Voter
-                votes={article.votes}
+      {articles.map(article => {
+        return (
+          <Card key={article.article_id} className="article-list-card">
+            <Card.Body>
+              <ArticleStub article={article} />
+              <div className="comment-vote-list-container">
+              <Voter className="article-list-voter"
+                article={article}
                 id={article.article_id}
                 path="/articles"
                 username={username}
               />
-              <hr />
 
-              <Link to={`/articles/${article.article_id}`}>
-                <Button>more</Button>
+              <Link className="more-button" to={`/articles/${article.article_id}`}>
+                <Button variant="outline-secondary">more</Button>
               </Link>
+              </div>
               <br />
               {path !== "/" && username === article.author && (
                 <Button variant="danger" onClick={handleRemoveItem} value={article.article_id}>
                   Delete Your Article
                 </Button>
               )}
-              </Card.Body>
-            </Card>
-            // </li>
-          );
-        })}
+            </Card.Body>
+          </Card>
+          // </li>
+        );
+      })}
       <Paginator
         page={page}
         itemCount={articleCount}
