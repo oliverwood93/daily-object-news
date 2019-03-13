@@ -1,14 +1,17 @@
 import React from "react";
-import DatePosted from './DatePosted'
+import DatePosted from "./DatePosted";
+import { Card } from "react-bootstrap";
 
-export default function ArticleDisplay({article}) {
+export default function ArticleDisplay({ article }) {
   return (
-    <article className="article-display">
-      <h3>{article.title}</h3>
-      <DatePosted createdAt={article.created_at} fullDate={true}/>
-      <h4>Topic: {article.topic}</h4>
-      <h4>Author: {article.author}</h4>
-      <p>{article.body}</p>
-    </article>
+    <Card className="article-display">
+      <Card.Header>{article.title}</Card.Header>
+      <Card.Body>
+        <Card.Text className="topic-title">* {article.topic} *</Card.Text>
+        <DatePosted className="date-article-full" createdAt={article.created_at} fullDate={true} />
+        <Card.Text>{article.body}</Card.Text>
+        <Card.Text className="author">- By {article.author}</Card.Text>
+      </Card.Body>
+    </Card>
   );
 }

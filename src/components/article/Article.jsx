@@ -5,7 +5,7 @@ import ArticleDisplay from "../ArticleDisplay";
 import Voter from "../Voter";
 import CommentSection from "../CommentSection";
 import { Button } from "react-bootstrap";
-import './Article.css'
+import "./Article.css";
 
 export default class Article extends Component {
   state = {
@@ -37,9 +37,10 @@ export default class Article extends Component {
       return (
         <div>
           <ArticleDisplay article={article} />
-          <div id="article-page-voter">
-            <Voter className="voter-article-list"
-              votes={article.votes}
+          <div className="vote-container">
+            <Voter
+              className="voter-article-list"
+              articleOrComment={article}
               id={article.article_id}
               path="/articles"
               username={username}

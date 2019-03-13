@@ -7,7 +7,7 @@ export default function CommentStub({ comment }) {
     <article key={comment_id} className="comment">
       <h5>{author}</h5>
       <p>{body}</p>
-      <DatePosted createdAt={created_at}/>
+      <DatePosted createdAt={created_at} fullDate={true}/>
     </article>
   );
 }

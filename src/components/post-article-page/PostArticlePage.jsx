@@ -25,47 +25,40 @@ export default class PostArticlePage extends Component {
       );
     } else
       return (
-        <div className="create-account-form" >
-          <form onSubmit={this.handleSubmit}>
+        <form className="create-account-form" onSubmit={this.handleSubmit}>
+          {" "}
+          <div className="title-input">
             Title:{" "}
-            <input
-              className="title-input"
-              onChange={this.handleTitleChange}
-              name="title-input"
-              type="text"
-              required
+            <input onChange={this.handleTitleChange} name="title-input" type="text" required />
+          </div>
+          <TopicSelector
+            className="topic-selector"
+            topics={topics}
+            path={path}
+            handleSelectTopic={this.handleSelectTopic}
+          />
+          {topic === "newTopic" && (
+            <PostNewTopic
+              className="post-topic-form"
+              handleNameChange={this.handleTopicNameChange}
+              handleDescriptionChange={this.handleTopicDescriptionChange}
             />
-            <br />
-            <TopicSelector
-              className="topic-selector"
-              topics={topics}
-              path={path}
-              handleSelectTopic={this.handleSelectTopic}
-            />
-            {topic === "newTopic" && (
-              <PostNewTopic
-                className="post-topic-form"
-                handleNameChange={this.handleTopicNameChange}
-                handleDescriptionChange={this.handleTopicDescriptionChange}
-              />
-            )}
-            <textarea
-              className="article-body"
-              required
-              onChange={this.handleBodyChange}
-              name="article-body"
-              rows="30"
-              cols="65"
-              placeholder="Please Write Article Here..."
-            />
-            <button type="submit">Post Article</button>
-          </form>
-        </div>
+          )}
+          <textarea
+            className="article-body"
+            required
+            onChange={this.handleBodyChange}
+            name="article-body"
+            rows="30"
+            cols="65"
+            placeholder="Please Write Article Here..."
+          />
+          <button className="post-button" type="submit">
+            Post Article
+          </button>
+        </form>
       );
   }
-  // handleCheckTopic = event => {
-
-  // }
 
   handleSelectTopic = event => {
     const topic = event.target.value;

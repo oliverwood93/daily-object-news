@@ -3,14 +3,9 @@
   max-height: 100%;
 }
 
-.comment-list {
-  list-style: none;
-}
 
-.article-display {
-  border: 2px solid black;
-  margin: 10px 40px 10px 40px;
-}
+
+
 
 
 button {
@@ -20,11 +15,11 @@ button {
 select {
   margin: 0 4px 0 2px;
 }
-
+/* 
 #article-page-voter {
   border: 2px solid black;
   margin: 2px 40px 2px 40px;
-}
+} */
 
 .header-container {
   width: 100%;
@@ -34,6 +29,9 @@ select {
   grid-template-columns: 1.6fr 0.3fr;
   grid-template-rows: 1fr;
   grid-template-areas: "header login-icon ";
+  border-bottom-left-radius: 6%;
+  border-bottom-right-radius: 6%;
+  
 }
 
 .site-header {
@@ -54,13 +52,17 @@ select {
 }
 .user-avatar {
   grid-area: login-icon;
-  height: 6vh;
+  height: 5.5vh;
   width: auto;
   border: 2px solid greenyellow;
   border-radius: 50%;
   background-color: white;
-  margin-top: 1vh;
-  margin-left: 1vw;
+  margin-top: 1.4vh;
+  margin-left: 2.5vw;
+  position: fixed;
+  right: 2.8vw;
+  z-index: 1000;
+  
 }
 @media only screen and (max-width: 500px) {
   .site-header {
@@ -68,5 +70,17 @@ select {
     padding-left: 6vw;
     height: 17vw;
   }
+}
+.btn:focus{
+    /* outline: none; */
+  /* color: green; */
+  /* background-color: white; */
+  /* pointer-events: visible; */
+}
+
+#upbutton-disabled{
+  /* outline: none;
+  color: green;
+  background-color: white; */
 }
 

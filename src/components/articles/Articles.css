@@ -1,11 +1,3 @@
-/* .refine-articles-container {
-  border: 3px solid black;
-  border-radius: 5%;
-  width: 98vw;
-  margin: auto;
-  align-content: center;
-  height: 8.5vh;
-} */
 
 .articles-header-container {
   width: 98vw;
@@ -21,13 +13,8 @@ justify-content: center;
   width: 50vw;
   height: 3vh;
   float: left;
-  /* grid-area: filter; */
 }
-/* .sort-order-container{
-  
-  display: flexbox;
 
-} */
 #sort-by {
   display: flexbox;
   width: 20vw;
@@ -42,9 +29,6 @@ justify-content: center;
 }
 #sort-button {
   display: grid;
-  /* height: 3vh; */
-  /* margin-top: 1vh;
-  margin-bottom: 1vh; */
   align-content: center;
 }
 
@@ -98,6 +82,7 @@ justify-content: center;
   margin-right: -60%;
 }
 
+
 .author-onstub {
   font-size: 0.8rem;
   display: flexbox;
@@ -130,14 +115,10 @@ justify-content: center;
 .upvote-button-list {
   display: grid;
   grid-area: upvote;
-  /* width: 29vw;
-justify-content: center; */
 }
 .downvote-button-list {
   display: grid;
   grid-area: downvote;
-  /* width: 29vw;
-  text-align: center; */
 }
 .more-button {
   display: grid;

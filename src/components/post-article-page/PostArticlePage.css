@@ -1,25 +1,31 @@
 .create-account-form {
-  grid-template-areas:
-    "title-input"
-    "topic-selector"
-    "post-topic-form blank"
-    "article-body";
+  /* text-align: center; */
+  margin: 0 0 0 0;
+  border: 2px solid lightgray;
+  width: 80vw;
+  display: grid;
+  grid-template-columns: min-content;
+  grid-template-rows: min-content;
+  grid-template-areas: "title" "create-topic" "article" "button"
 }
 
-.title-input {
-  grid-area: title-input;
-  display: inline;
+.topic-selector{
+/* display: grid; */
+grid-area: title;
 }
-.topic-selector {
-  grid-area: topic-selector;
-  display: inline;
+.title-input{
+/* display: grid; */
+grid-area: title;
 }
-.post-topic-form {
-  grid-area: post-topic-form;
-  /* display: inline; */
-  margin-top: 50px;
+
+.post-topic-form{
+  grid-area: create-topic;
 }
-.article-body {
-  grid-area: article-body;
-  display: inline;
+.article-body{
+  grid-area: article;
+  /* width: 60vw;
+  height: 60vh; */
+}
+.post-button{
+  grid-area: button;
 }

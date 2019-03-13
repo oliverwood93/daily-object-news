@@ -4,6 +4,8 @@ import { postComment, fetchArticleOrComments } from "../utils/api-requests";
 import CommentList from "../components/CommentList";
 import { deleteArticleOrComment } from "../utils/api-requests";
 import { navigate } from "@reach/router";
+import "./Comment.css";
+import { Card } from "react-bootstrap";
 
 export default class CommentSection extends Component {
   state = {
@@ -12,15 +14,19 @@ export default class CommentSection extends Component {
   };
 
   componentDidMount() {
-    const {articleId} = this.props
-    fetchArticleOrComments(articleId, 'comments').then(({comments}) => this.setState({ comments }));
+    const { articleId } = this.props;
+    fetchArticleOrComments(articleId, "comments").then(({ comments }) =>
+      this.setState({ comments })
+    );
   }
   render() {
     const { comments } = this.state;
     const { username } = this.props;
     return (
-      <Fragment>
+      <Card className="comments-container">
+        <Card.Header>Comments</Card.Header>
         <NewCommentBox
+          className="new-comment-container"
           handleBlur={this.handleBlur}
           handleSubmit={this.handleSubmit}
           username={username}
@@ -30,7 +36,7 @@ export default class CommentSection extends Component {
           username={username}
           handleRemoveItem={this.handleRemoveItem}
         />
-      </Fragment>
+      </Card>
     );
   }
   handleBlur = event => {
@@ -40,7 +46,7 @@ export default class CommentSection extends Component {
   handleSubmit = event => {
     event.preventDefault();
     const { articleId, username } = this.props;
-    const { commentToAdd }= this.state;
+    const { commentToAdd } = this.state;
     postComment(articleId, username, commentToAdd)
       .then(addedComment =>
         this.setState(prevState => {

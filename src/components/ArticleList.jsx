@@ -24,7 +24,7 @@ export default function ArticleList({
               <ArticleStub article={article} />
               <div className="comment-vote-list-container">
               <Voter className="article-list-voter"
-                article={article}
+                articleOrComment={article}
                 id={article.article_id}
                 path="/articles"
                 username={username}
