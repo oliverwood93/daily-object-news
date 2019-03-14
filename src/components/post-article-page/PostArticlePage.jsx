@@ -4,6 +4,7 @@ import TopicSelector from "../TopicSelector";
 import PostNewTopic from "../PostNewTopic";
 import { postUserTopicOrArticle } from "../../utils/api-requests";
 import "./PostArticlePage.css";
+import { Card } from "react-bootstrap";
 
 export default class PostArticlePage extends Component {
   state = {
@@ -25,38 +26,50 @@ export default class PostArticlePage extends Component {
       );
     } else
       return (
-        <form className="create-account-form" onSubmit={this.handleSubmit}>
-          {" "}
-          <div className="title-input">
-            Title:{" "}
-            <input onChange={this.handleTitleChange} name="title-input" type="text" required />
-          </div>
-          <TopicSelector
-            className="topic-selector"
-            topics={topics}
-            path={path}
-            handleSelectTopic={this.handleSelectTopic}
-          />
-          {topic === "newTopic" && (
-            <PostNewTopic
-              className="post-topic-form"
-              handleNameChange={this.handleTopicNameChange}
-              handleDescriptionChange={this.handleTopicDescriptionChange}
-            />
-          )}
-          <textarea
-            className="article-body"
-            required
-            onChange={this.handleBodyChange}
-            name="article-body"
-            rows="30"
-            cols="65"
-            placeholder="Please Write Article Here..."
-          />
-          <button className="post-button" type="submit">
-            Post Article
-          </button>
-        </form>
+        <Card className="create-account-form">
+          <Card.Header>Have your say!</Card.Header>
+          <form onSubmit={this.handleSubmit}>
+            {" "}
+            <div className="title-topic-container">
+              <input
+                className="title"
+                onChange={this.handleTitleChange}
+                name="title-input"
+                type="text"
+                required
+                placeholder="Title..."
+              />
+              <TopicSelector
+                className="topic-selector"
+                topics={topics}
+                path={path}
+                handleSelectTopic={this.handleSelectTopic}
+              />
+
+              {topic === "newTopic" && (
+                <PostNewTopic
+                  className="post-topic-form"
+                  handleNameChange={this.handleTopicNameChange}
+                  handleDescriptionChange={this.handleTopicDescriptionChange}
+                />
+              )}
+            </div>
+            <div className="body-button-container">
+              <textarea
+                className="article-body"
+                required
+                onChange={this.handleBodyChange}
+                name="article-body"
+                rows="30"
+                cols="65"
+                placeholder="Please Write Article Here..."
+              />
+              <button className="post-button" type="submit">
+                Post Article
+              </button>
+            </div>
+          </form>
+        </Card>
       );
   }
 
