@@ -5,7 +5,7 @@ import Card from "react-bootstrap/Card";
 export default function ArticleDisplay({ article }) {
   return (
     <Card className="article-display">
-      <Card.Header>{article.title}</Card.Header>
+      <Card.Header className="article-title">{article.title}</Card.Header>
       <Card.Body>
         <Card.Text className="topic-title">* {article.topic} *</Card.Text>
         <DatePosted className="date-article-full" createdAt={article.created_at} fullDate={true} />

@@ -45,13 +45,17 @@ export default class Article extends Component {
               path="/articles"
               username={username}
             />
+            {username === article.author && (
+              <Button
+                className="delete-button"
+                variant="danger"
+                onClick={this.handleRemoveItem}
+                value={article.article_id}
+              >
+                Delete Article
+              </Button>
+            )}
           </div>
-          <br />
-          {username === article.author && (
-            <Button variant="danger" onClick={this.handleRemoveItem} value={article.article_id}>
-              Delete Your Article
-            </Button>
-          )}
           <CommentSection articleId={this.props.id} username={username} />
         </div>
       );

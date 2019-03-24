@@ -1,63 +1,83 @@
 .article-display {
-  width: 98vw;
+  width: 97.5vw;
   margin-left: 1vw;
-  margin-top: 1vh;
+  margin-top: 3vh;
+}
+
+.article-title {
+  font-family: "Helvetica Neue", sans-serif;
+  font-size: 30px;
+  line-height: 24px;
+  margin: 0 0 24px;
+  /* text-align: justify; */
+  text-justify: inter-word;
 }
 
 .vote-container {
   display: grid;
-  width: 98vw;
+  width: 97.5vw;
   margin-left: 1vw;
   margin-top: 0.5vh;
-  border:solid lightgray 1px;
+  border: solid lightgray 1px;
   border-radius: 5%;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1.4fr 1fr;
   grid-template-rows: 0.6fr 1fr;
-  grid-template-areas: "vote .. comment" "upvote .. downvote";
+  grid-template-areas: "vote .. comment" "upvote del downvote";
 }
-.vote-container-comment{
+.vote-container-comment {
+  width: 90vw;
+  margin-left: 1vw;
   display: grid;
   margin-top: 0.5vh;
   border-radius: 5%;
-  grid-template-columns: 1fr 1fr 1fr;
+  margin-right: 20vw;
+  grid-template-columns: 1fr 1.4fr 1fr;
   grid-template-rows: 0.6fr 1fr;
-  grid-template-areas: ".. vote .." "upvote .. downvote" ".. delete ..";
+  grid-template-areas: ".. vote .." "upvote delete downvote";
+}
+#comment-list {
+  width: 97.5;
+  padding: 1vh 1vw 1vh 2vw;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
 }
 
-.delete-comment{
+.delete-comment {
   grid-area: delete;
-  width: 30vw;
+  width: 20vw;
+  margin: auto auto auto auto;
+}
 
+.delete-button {
+  grid-area: del;
+  width: 35vw;
+  margin: 1vh auto 1vh auto;
 }
 
 .comment-count-full {
   grid-area: comment;
-  display: grid;
-  width: 3vw;
   margin-bottom: 0;
 }
 
 .vote-count-full {
   grid-area: vote;
-  display: grid;
-  width: 30vw;
   margin-bottom: 0;
 }
 
 .upvote-button-full {
-  display: grid;
   width: 29vw;
-  margin-bottom: 1vh;
+  margin: auto auto auto auto;
   grid-area: upvote;
 }
 .downvote-button-full {
   display: grid;
   width: 29vw;
-  margin-bottom: 1vh;
+  margin: auto auto auto auto;
   grid-area: downvote;
 }
 
-.comments-container{
+.comments-container {
+  margin-top: 1vh;
   width: 98vw;
   margin-left: 1vw;
 }
@@ -79,6 +99,7 @@
 .topic-title {
   margin-bottom: 1.5vh;
   text-align: right;
+  font-size: 24px;
   font-style: italic;
 }
 .author {
