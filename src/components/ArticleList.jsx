@@ -46,12 +46,13 @@ export default function ArticleList({
           </Card>
         );
       })}
-      <Paginator
+      {!path && <Paginator
         page={page}
         itemCount={articleCount}
         limit="10"
         handlePageClick={handlePageClick}
-      />
+    
+      />}
     </div>
   );
 }

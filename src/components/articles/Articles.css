@@ -13,22 +13,52 @@
   grid-area: filter;
   height: 3vh;
 }
+.paginator {
+  display: grid;
+  grid-template-columns: 1fr 0.3fr 0.3fr 0.3fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "prev nums1 nums2 nums3 next";
+}
+
+.prev-btn {
+  grid-area: prev;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+}
+.next-btn {
+  grid-area: next;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+}
+.page-nums-0 {
+  grid-area: nums1;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+}
+.page-nums-1 {
+  margin-top: 1vh;
+  grid-area: nums2;
+  margin-bottom: 1vh;
+}
+.page-nums-2 {
+  grid-area: nums3;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+}
 
 #sort-by {
   grid-area: sort;
   width: 22vw;
-
 }
 #order {
   grid-area: order;
   width: 22vw;
-
 }
 #sort-button {
-grid-area: button;
-width: 45vw;
-margin-top: 1vh;
-margin-bottom: 1vh;
+  grid-area: button;
+  width: 45vw;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
 }
 
 .articles-header {

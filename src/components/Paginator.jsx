@@ -1,14 +1,35 @@
-import React, { Fragment } from "react";
+import React from "react";
+import Button from "react-bootstrap/Button";
+import paginate from "jw-paginate";
 
-export default function Paginator({page, itemCount, limit, handlePageClick}) {
+export default function Paginator({ page, itemCount, limit, handlePageClick }) {
+  const { pages } = paginate(itemCount, page, limit, 3);
   return (
-    <Fragment>
-      <button disabled={page <= 1} onClick={() => handlePageClick(-1)}>
+    <div className="paginator">
+      <Button
+        variant="secondary"
+        className="prev-btn"
+        disabled={page <= 1}
+        onClick={() => handlePageClick(-1)}
+      >
         Prev Page
-      </button>
-      <button disabled={page >= itemCount / limit} onClick={() => handlePageClick(1)}>
+      </Button>
+      {pages.map((currPage, i) => (
+        <Button
+          variant={currPage === page ? "primary" : "secondary"}
+          className={`page-nums-${i}`}
+        >
+          {currPage}
+        </Button>
+      ))}
+      <Button
+        variant="secondary"
+        className="next-btn"
+        disabled={page >= itemCount / limit}
+        onClick={() => handlePageClick(1)}
+      >
         Next Page
-      </button>
-    </Fragment>
+      </Button>
+    </div>
   );
 }
