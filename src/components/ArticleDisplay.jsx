@@ -1,6 +1,6 @@
 import React from "react";
 import DatePosted from "./DatePosted";
-import { Card } from "react-bootstrap";
+import Card from "react-bootstrap/Card";
 
 export default function ArticleDisplay({ article }) {
   return (

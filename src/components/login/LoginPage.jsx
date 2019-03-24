@@ -24,9 +24,7 @@ export default class LoginPage extends Component {
           <UserDropdown id="login-dropdown" handleSignInUser={handleSignInUser} users={users} />
           <CreateAccountForm
             handleSubmit={this.handleSubmit}
-            handleUsernameChange={this.handleUsernameChange}
-            handleNameChange={this.handleNameChange}
-            handleAvartUrlChange={this.handleAvartUrlChange}
+            handleInput={this.handleInput}
           />
         </div>
       );
@@ -50,17 +48,9 @@ export default class LoginPage extends Component {
       );
   }
 
-  handleUsernameChange = event => {
-    const username = event.target.value;
-    this.setState({ username });
-  };
-  handleNameChange = event => {
-    const name = event.target.value;
-    this.setState({ name });
-  };
-  handleAvartUrlChange = event => {
-    const avatar_url = event.target.value;
-    this.setState({ avatar_url });
+  handleInput = event => {
+    const {value} = event.target;
+    this.setState({ [event.target.name]: value });
   };
 
   handleSubmit = event => {

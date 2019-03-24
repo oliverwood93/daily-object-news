@@ -1,11 +1,9 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import NewCommentBox from "./NewCommentBox";
-import { postComment, fetchArticleOrComments } from "../utils/api-requests";
+import { postComment, fetchArticleOrComments, deleteArticleOrComment } from "../utils/api-requests";
 import CommentList from "../components/CommentList";
-import { deleteArticleOrComment } from "../utils/api-requests";
 import { navigate } from "@reach/router";
-import "./Comment.css";
-import { Card } from "react-bootstrap";
+import Card from "react-bootstrap/Card";
 
 export default class CommentSection extends Component {
   state = {

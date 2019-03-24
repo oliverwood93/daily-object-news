@@ -58,7 +58,6 @@ export default class Voter extends Component {
   };
 
   removeButtonHighlight = e => {
-    console.dir(e.target);
     e.target.removeEventListener("click", () => this.handleVoteClick);
   };
 }

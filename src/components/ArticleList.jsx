@@ -3,7 +3,8 @@ import { Link } from "@reach/router";
 import ArticleStub from "./ArticleStub";
 import Voter from "./Voter";
 import Paginator from "./Paginator";
-import { Card, Button } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 
 export default function ArticleList({
   articles,
@@ -23,16 +24,17 @@ export default function ArticleList({
             <Card.Body>
               <ArticleStub article={article} />
               <div className="comment-vote-list-container">
-              <Voter className="article-list-voter"
-                articleOrComment={article}
-                id={article.article_id}
-                path="/articles"
-                username={username}
-              />
+                <Voter
+                  className="article-list-voter"
+                  articleOrComment={article}
+                  id={article.article_id}
+                  path="/articles"
+                  username={username}
+                />
 
-              <Link className="more-button" to={`/articles/${article.article_id}`}>
-                <Button variant="outline-secondary">more</Button>
-              </Link>
+                <Link className="more-button" to={`/articles/${article.article_id}`}>
+                  <Button variant="outline-secondary">more</Button>
+                </Link>
               </div>
               <br />
               {path !== "/" && username === article.author && (
@@ -42,7 +44,6 @@ export default function ArticleList({
               )}
             </Card.Body>
           </Card>
-          // </li>
         );
       })}
       <Paginator

@@ -3,9 +3,19 @@
   max-height: 100%;
 }
 
+body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 16px
+}
 
-
-
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
 
 
 button {
@@ -15,11 +25,6 @@ button {
 select {
   margin: 0 4px 0 2px;
 }
-/* 
-#article-page-voter {
-  border: 2px solid black;
-  margin: 2px 40px 2px 40px;
-} */
 
 .header-container {
   width: 100%;
@@ -71,16 +76,5 @@ select {
     height: 17vw;
   }
 }
-.btn:focus{
-    /* outline: none; */
-  /* color: green; */
-  /* background-color: white; */
-  /* pointer-events: visible; */
-}
 
-#upbutton-disabled{
-  /* outline: none;
-  color: green;
-  background-color: white; */
-}
 

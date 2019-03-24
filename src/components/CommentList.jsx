@@ -1,7 +1,8 @@
 import React from "react";
 import CommentStub from "./CommentStub";
 import Voter from "./Voter";
-import { Button, Card } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 
 export default function CommentList({ comments, username, handleRemoveItem }) {
   return (
@@ -19,7 +20,12 @@ export default function CommentList({ comments, username, handleRemoveItem }) {
                   username={username}
                 />
                 {username === comment.author && (
-                  <Button className="delete-comment" variant="danger" value={comment.comment_id} onClick={handleRemoveItem}>
+                  <Button
+                    className="delete-comment"
+                    variant="danger"
+                    value={comment.comment_id}
+                    onClick={handleRemoveItem}
+                  >
                     Delete Your Comment
                   </Button>
                 )}

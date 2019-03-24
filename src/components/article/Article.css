@@ -9,7 +9,6 @@
   width: 98vw;
   margin-left: 1vw;
   margin-top: 0.5vh;
-  /* background-color: lightgray; */
   border:solid lightgray 1px;
   border-radius: 5%;
   grid-template-columns: 1fr 1fr;

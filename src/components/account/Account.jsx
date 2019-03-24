@@ -3,7 +3,7 @@ import UserAvatar from "../UserAvatar";
 import "./Account.css";
 import { fetchArticles } from "../../utils/api-requests";
 import UserArticles from "../UserArticles";
-import {Button} from 'react-bootstrap'
+import Button from 'react-bootstrap/Button'
 
 export default class Account extends Component {
   state = {

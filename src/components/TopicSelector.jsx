@@ -4,6 +4,7 @@ function TopicSelector({ topics, handleSelectTopic, path }) {
   return (
     <div className="topic-selector">
       <select
+        name={path === "/articles" ? "article" : "topic"}
         defaultValue={path === "/articles" ? "Filter Articles By Topic" : "Please Select a Topic"}
         onChange={handleSelectTopic}
         

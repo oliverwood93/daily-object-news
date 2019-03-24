@@ -5,7 +5,7 @@ import ArticleList from "../ArticleList";
 import SortyBy from "../SortyBy";
 import { navigate } from "@reach/router";
 import "./Articles.css";
-import { Card } from "react-bootstrap";
+import Card from "react-bootstrap/Card";
 
 class Articles extends Component {
   state = {

@@ -4,7 +4,9 @@ import TopicSelector from "../TopicSelector";
 import PostNewTopic from "../PostNewTopic";
 import { postUserTopicOrArticle } from "../../utils/api-requests";
 import "./PostArticlePage.css";
-import { Card, InputGroup, FormControl, Button, Form } from "react-bootstrap";
+import Card from "react-bootstrap/Card";
+import FormControl from "react-bootstrap/FormControl";
+import Button from "react-bootstrap/Button";
 
 export default class PostArticlePage extends Component {
   state = {
@@ -33,35 +35,31 @@ export default class PostArticlePage extends Component {
               className="topic-selector"
               topics={topics}
               path={path}
-              handleSelectTopic={this.handleSelectTopic}
+              handleSelectTopic={this.handleInput}
             />
           </Card.Header>
           <form onSubmit={this.handleSubmit}>
-            {" "}
             <div className="title-topic-container">
               <FormControl
                 autoComplete="off"
                 className="title"
-                onChange={this.handleTitleChange}
-                name="title-input"
+                onChange={this.handleInput}
+                name="title"
                 type="text"
                 required
                 placeholder="Title..."
               />
 
               {topic === "newTopic" && (
-                <PostNewTopic
-                  className="post-topic-form"
-                  handleNameChange={this.handleTopicNameChange}
-                  handleDescriptionChange={this.handleTopicDescriptionChange}
-                />
+                <PostNewTopic className="post-topic-form" handleInput={this.handleInput} />
               )}
             </div>
             <textarea
               className="article-body"
               required
-              onChange={this.handleBodyChange}
+              onChange={this.handleInput}
               required
+              name="body"
               placeholder="Please Write Article Here..."
             />
             <Button className="post-button" type="submit">
@@ -72,29 +70,12 @@ export default class PostArticlePage extends Component {
       );
   }
 
-  handleSelectTopic = event => {
-    const topic = event.target.value;
-    this.setState({ topic });
-    return topic;
+  handleInput = event => {
+    const { value } = event.target;
+    this.setState({ [event.target.name]: value });
   };
-  handleTitleChange = event => {
-    const title = event.target.value;
-    this.setState({ title });
-  };
-  handleBodyChange = event => {
-    const body = event.target.value;
-    this.setState({ body });
-  };
-  handleTopicNameChange = event => {
-    const slug = event.target.value;
-    this.setState({ slug });
-  };
-  handleTopicDescriptionChange = event => {
-    const description = event.target.value;
-    this.setState({ description });
-  };
+
   handleSubmit = event => {
-    console.log(this.state);
     event.preventDefault();
     const username = this.props.loggedInUser;
     const { slug, description, topic, title, body } = this.state;

@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import DatePosted from "./DatePosted";
-import { Card } from "react-bootstrap";
+import Card from "react-bootstrap/Card";
 
 export default function ArticleStub({ article }) {
   return (
@@ -10,7 +10,7 @@ export default function ArticleStub({ article }) {
       <DatePosted className="date-article-list" createdAt={article.created_at} />
       <Card.Text>{article.body.slice(0, 160)}...</Card.Text>
       <Card.Text className="author-onstub">- By {article.author}</Card.Text>
-      <hr/>
+      <hr />
     </Fragment>
   );
 }

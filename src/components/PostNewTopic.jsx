@@ -1,7 +1,7 @@
-import React, { Fragment } from "react";
-import { FormControl } from "react-bootstrap";
+import React from "react";
+import FormControl from "react-bootstrap/FormControl";
 
-export default function PostNewTopic({ handleNameChange, handleDescriptionChange }) {
+export default function PostNewTopic({ handleInput }) {
   return (
     <div className="new-topic">
       <FormControl
@@ -9,8 +9,8 @@ export default function PostNewTopic({ handleNameChange, handleDescriptionChange
         className="topic-name"
         placeholder="Topic..."
         required
-        onChange={handleNameChange}
-        name="name"
+        onChange={handleInput}
+        name="slug"
         type="text"
       />
       <FormControl
@@ -18,7 +18,7 @@ export default function PostNewTopic({ handleNameChange, handleDescriptionChange
         autoComplete="off"
         className="topic-description"
         placeholder="Description of Topic..."
-        onChange={handleDescriptionChange}
+        onChange={handleInput}
         name="description"
         type="text"
       />
