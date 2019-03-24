@@ -6,6 +6,7 @@ import SortyBy from "../SortyBy";
 import { navigate } from "@reach/router";
 import "./Articles.css";
 import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
 
 class Articles extends Component {
   state = {
@@ -59,10 +60,13 @@ class Articles extends Component {
               <p className="articles-topic-subheader">All Articles</p>
             )}
           </Card.Title>
-          <div className="articles-filter-container">
-            <TopicSelector topics={topics} handleSelectTopic={this.handleSelectTopic} path={path} />
-            <SortyBy handleSubmit={this.handleSubmit} />
-          </div>
+          <form onSubmit={this.handleSubmit} className="articles-filter-container">
+            <TopicSelector className="topic-selector" topics={topics} handleSelectTopic={this.handleSelectTopic} path={path} />
+            <SortyBy />
+            <Button size="sm" id="sort-button" type="submit">
+              Apply
+            </Button>
+          </form>
         </Card>
         <ArticleList
           articles={articles}

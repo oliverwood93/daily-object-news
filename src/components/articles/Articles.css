@@ -1,35 +1,34 @@
-
 .articles-header-container {
   width: 98vw;
   margin-top: 1vh;
   margin-left: 1vw;
 }
 .articles-filter-container {
-justify-content: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "filter sort order" ".. button button";
 }
 .topic-selector {
-  display: flexbox;
-  margin-bottom: 1vh; 
-  width: 50vw;
+  grid-area: filter;
   height: 3vh;
-  float: left;
 }
 
 #sort-by {
-  display: flexbox;
-  width: 20vw;
-  height: 3vh;
-  float: left;
+  grid-area: sort;
+  width: 22vw;
+
 }
 #order {
-  display: flexbox;
-  width: 20vw;
-  height: 3vh;
-  float: left;
+  grid-area: order;
+  width: 22vw;
+
 }
 #sort-button {
-  display: grid;
-  align-content: center;
+grid-area: button;
+width: 45vw;
+margin-top: 1vh;
+margin-bottom: 1vh;
 }
 
 .articles-header {
@@ -81,7 +80,6 @@ justify-content: center;
   left: 0.5em;
   margin-right: -60%;
 }
-
 
 .author-onstub {
   font-size: 0.8rem;

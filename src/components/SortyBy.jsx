@@ -1,9 +1,8 @@
-import React from "react";
-import Button from "react-bootstrap/Button";
+import React, {Fragment} from "react";
 
-export default function SortyBy({ handleSubmit }) {
+export default function SortyBy() {
   return (
-    <form onSubmit={handleSubmit} className="sort-order-container">
+    <Fragment>
       <select id="sort-by" name="sort-by" defaultValue="Sort By">
         <option disabled>Sort By</option>
         <option value="created_at">Date Posted</option>
@@ -15,7 +14,6 @@ export default function SortyBy({ handleSubmit }) {
         <option value="asc">Ascending</option>
         <option value="desc">Descending</option>
       </select>
-      <Button size="sm" id="sort-button" type="submit">Apply</Button>
-    </form>
+    </Fragment>
   );
 }

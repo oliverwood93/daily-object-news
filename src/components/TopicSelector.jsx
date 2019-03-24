@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 
 function TopicSelector({ topics, handleSelectTopic, path }) {
   return (
-    <div className="topic-selector">
+    <Fragment>
       <select
         name={path === "/articles" ? "article" : "topic"}
         defaultValue={path === "/articles" ? "Filter Articles By Topic" : "Please Select a Topic"}
@@ -30,7 +30,7 @@ function TopicSelector({ topics, handleSelectTopic, path }) {
           </option>
         ))}
       </select>
-    </div>
+    </Fragment>
   );
 }
 
