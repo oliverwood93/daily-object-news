@@ -122,8 +122,8 @@
 }
 .comment-vote-list-container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
+  grid-template-columns: auto;
+  grid-template-rows: auto;
   grid-template-areas: "vote .. comment" "upvote more downvote";
 }
 
@@ -143,16 +143,103 @@
 .upvote-button-list {
   display: grid;
   grid-area: upvote;
+   justify-self: center;
 }
 .downvote-button-list {
   display: grid;
   grid-area: downvote;
+  justify-self: center;
 }
 .more-button {
   display: grid;
   grid-area: more;
+  height: 5vh;
+  margin: 0;
 }
 
 .btn:focus {
   outline: none;
+}
+.article-icons{
+  height: 5vh;
+  width: 15vw;
+  justify-self: center;
+}
+
+@media only screen and (min-width: 770px) {
+.comment-vote-wrapper{
+  display: inline-block;
+  margin-bottom: 1vh;
+  
+
+}
+  
+  .articles-header-container {
+    width: 80vw;
+    display: inline-block;
+  }
+  .articles-container {
+    display: inline-block;
+    width: 80vw;
+  }
+  .article-icons{
+  height: 5vh;
+  width: 10vw;
+  justify-self: center;
+}
+.comment-count-full {
+width: auto;
+  height: auto;
+}
+
+
+
+}
+@media only screen and (max-width: 769px) {
+  
+  
+  .articles-filter-container {
+  display: grid;
+  grid-template-columns: 2.5fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "filter sort" "button order ";
+}
+#order {
+  width: 22vw;
+  margin-top: 1.5vh;
+  height: 3vh;
+}
+
+.articles-header-container{
+  width: 91vw;
+}
+.articles-container{
+  width: 91vw;
+}
+
+
+.delete-button {
+ width: 30vw;
+  height: 10vh;
+}
+
+.comment-count-full {
+width: auto;
+  height: auto;
+}
+
+.vote-count-full {
+
+width: auto;
+  height: auto;
+}
+
+.upvote-button-full {
+ width: 30vw;
+  height: 10vh;
+}
+.downvote-button-full {
+ width: 30vw;
+  height: 10vh;
+}
 }

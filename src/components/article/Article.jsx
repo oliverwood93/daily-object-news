@@ -37,6 +37,7 @@ export default class Article extends Component {
       return (
         <div>
           <ArticleDisplay article={article} />
+          <div className="voter-wrapper">
           <div className="vote-container">
             <Voter
               className="voter-article-list"
@@ -56,7 +57,8 @@ export default class Article extends Component {
               </Button>
             )}
           </div>
-          <CommentSection articleId={this.props.id} username={username} />
+          <CommentSection articleId={this.props.id} username={username} commentCount={article.comment_count}/>
+          </div>
         </div>
       );
     }

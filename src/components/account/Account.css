@@ -1,0 +1,15 @@
+.user-avatar-account{
+  display: inline-block;
+  width: 20vw;
+  height: auto;
+  border-radius: 50%;
+  border: 2px solid greenyellow
+}
+
+.user-articles{
+  list-style: none;
+}
+
+.username-account-h1{
+  font-size: 20px;
+}

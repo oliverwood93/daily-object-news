@@ -7,7 +7,7 @@ import "../components/article/Article.css";
 
 export default function CommentList({ comments, username, handleRemoveItem }) {
   return (
-    <div>
+    <div className="comment-list">
       {comments.map(comment => {
         return (
           <Card key={comment.comment_id}>

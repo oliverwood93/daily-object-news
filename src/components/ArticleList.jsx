@@ -5,6 +5,9 @@ import Voter from "./Voter";
 import Paginator from "./Paginator";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import CardColumns from "react-bootstrap/CardColumns";
+import MediaQuery from "react-responsive";
+import { wrap } from "module";
 
 export default function ArticleList({
   articles,
@@ -23,18 +26,26 @@ export default function ArticleList({
           <Card key={article.article_id} className="article-list-card">
             <Card.Body>
               <ArticleStub article={article} />
-              <div className="comment-vote-list-container">
-                <Voter
-                  className="article-list-voter"
-                  articleOrComment={article}
-                  id={article.article_id}
-                  path="/articles"
-                  username={username}
-                />
+              <div className="comment-vote-wrapper">
+                <div className="comment-vote-list-container">
+                  <Voter
+                    className="article-list-voter"
+                    articleOrComment={article}
+                    id={article.article_id}
+                    path="/articles"
+                    username={username}
+                  />
 
-                <Link className="more-button" to={`/articles/${article.article_id}`}>
-                  <Button variant="outline-secondary">more</Button>
-                </Link>
+                  <Link className="more-button" to={`/articles/${article.article_id}`}>
+                    <Button variant="outline-secondary">
+                      <img
+                        className="article-icons"
+                        src="https://image.flaticon.com/icons/svg/60/60969.svg"
+                        alt="more info icon"
+                      />
+                    </Button>
+                  </Link>
+                </div>
               </div>
               <br />
               {path !== "/" && username === article.author && (
@@ -46,13 +57,14 @@ export default function ArticleList({
           </Card>
         );
       })}
-      {!path && <Paginator
-        page={page}
-        itemCount={articleCount}
-        limit="10"
-        handlePageClick={handlePageClick}
-    
-      />}
+      {!path && (
+        <Paginator
+          page={page}
+          itemCount={articleCount}
+          limit="10"
+          handlePageClick={handlePageClick}
+        />
+      )}
     </div>
   );
 }

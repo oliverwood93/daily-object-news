@@ -73,3 +73,29 @@
   margin-left: 1vw;
   margin-bottom: 1vh;
 }
+
+@media only screen and (min-width: 770px) {
+  .post-button{
+    width: 40vw;
+  }
+  .create-article-form{
+    width: 55vw;
+    text-align: center;
+  }
+
+  .post-article-wrapper{
+    display: inline-block;
+  }
+  .topic-name{
+    width: 20vw;
+    margin-right: 1vw;
+
+  }
+  .title-topic-container {
+    width: 50vw;
+  }
+  .article-body{
+    width: 50vw;
+    /* margin-left: 0; */
+  }
+}

@@ -8,7 +8,7 @@ export const fetchArticles = querys => {
 
 export const fetchArticleOrComments = (id, artOrComment) => {
   return request
-    .get(`/articles/${id}/${artOrComment === "comments" ? "comments" : ""}`)
+    .get(`/articles/${id}/${artOrComment === "comments" ? "comments?limit=5" : ""}`)
     .then(({ data }) => data);
 };
 

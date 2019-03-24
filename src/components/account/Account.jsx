@@ -1,9 +1,8 @@
 import React, { Component } from "react";
-import UserAvatar from "../UserAvatar";
 import "./Account.css";
 import { fetchArticles } from "../../utils/api-requests";
 import UserArticles from "../UserArticles";
-import Button from 'react-bootstrap/Button'
+import Button from "react-bootstrap/Button";
 
 export default class Account extends Component {
   state = {
@@ -39,8 +38,16 @@ export default class Account extends Component {
       return (
         <div>
           <h2>Account</h2>
-          <UserAvatar username={username} avatar_url={avatar_url} />
-          <h3>
+          <img
+            className="user-avatar-account"
+            src={avatar_url}
+            alt={`${username}'s avatar`}
+            onError={e => {
+              e.target.onerror = null;
+              e.target.src = "https://image.flaticon.com/icons/svg/149/149071.svg";
+            }}
+          />
+          <h3 className="username-account-h1">
             {username} - {name}
           </h3>
           <Button className="logout-button" onClick={handleLogoutClick}>

@@ -9,18 +9,19 @@
   font-size: 30px;
   line-height: 24px;
   margin: 0 0 24px;
-  /* text-align: justify; */
   text-justify: inter-word;
 }
 
 .vote-container {
   display: grid;
+  justify-items: center;
+  align-items: center;
   width: 97.5vw;
   margin-left: 1vw;
   margin-top: 0.5vh;
   border: solid lightgray 1px;
   border-radius: 5%;
-  grid-template-columns: 1fr 1.4fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 0.6fr 1fr;
   grid-template-areas: "vote .. comment" "upvote del downvote";
 }
@@ -30,8 +31,8 @@
   display: grid;
   margin-top: 0.5vh;
   border-radius: 5%;
-  margin-right: 20vw;
-  grid-template-columns: 1fr 1.4fr 1fr;
+  margin: auto;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 0.6fr 1fr;
   grid-template-areas: ".. vote .." "upvote delete downvote";
 }
@@ -44,14 +45,16 @@
 
 .delete-comment {
   grid-area: delete;
-  width: 20vw;
-  margin: auto auto auto auto;
+  width: 30vw;
+  height: 10vh;
+  margin: 0;
 }
 
 .delete-button {
   grid-area: del;
-  width: 35vw;
-  margin: 1vh auto 1vh auto;
+  width: 20vw;
+  height: 5vh;
+  margin: 0;
 }
 
 .comment-count-full {
@@ -62,24 +65,29 @@
 .vote-count-full {
   grid-area: vote;
   margin-bottom: 0;
+  margin: 0;
 }
 
 .upvote-button-full {
-  width: 29vw;
-  margin: auto auto auto auto;
+  width: 20vw;
+  height: 5vh;
+
+  margin: 0;
   grid-area: upvote;
 }
 .downvote-button-full {
   display: grid;
-  width: 29vw;
-  margin: auto auto auto auto;
+  width: 20vw;
+  margin: 0;
   grid-area: downvote;
+  height: 5vh;
 }
 
 .comments-container {
   margin-top: 1vh;
   width: 98vw;
   margin-left: 1vw;
+  display: inline-block;
 }
 .new-comment-form {
   border: 1px solid lightgray;
@@ -118,7 +126,7 @@
   background-color: #333;
   content: "";
   display: inline-block;
-  height: 0.8px;
+  height: 1px;
   position: relative;
   vertical-align: middle;
   width: 50%;
@@ -130,4 +138,76 @@
 .full-date:after {
   left: 0.5em;
   margin-right: -60%;
+}
+.article-icons{
+  height: 3vh;
+  margin: 0 0 0 0;
+}
+
+
+@media only screen and (min-width: 770px) {
+ .delete-button{
+  width: 20vw;
+}
+  .article-display {
+    width: 70vw;
+    display: inline-block;
+  }
+  .voter-wrapper {
+    display: inline-block;
+  }
+  .vote-container {
+    width: 70vw;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+  }
+  .comments-container {
+    margin-top: 1vh;
+    width: 70vw;
+    display: inline-block;
+  }
+  .new-comment-text {
+    width: 65vw;
+  }
+  
+  .comment-list {
+    width: 70vw;
+  }
+  .vote-container-comment {
+    width: 50vw;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+
+.delete-comment {
+  width: 30vw;
+  height: 10vh;
+}
+
+.delete-button {
+ width: 30vw;
+  height: 10vh;
+}
+
+.comment-count-full {
+width: auto;
+  height: auto;
+}
+
+.vote-count-full {
+
+width: auto;
+  height: auto;
+}
+
+.upvote-button-full {
+ width: 30vw;
+  height: 10vh;
+}
+.downvote-button-full {
+ width: 30vw;
+  height: 10vh;
+}
 }

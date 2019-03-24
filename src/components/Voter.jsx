@@ -22,7 +22,6 @@ export default class Voter extends Component {
           </p>
         )}
 
-      
         <Button
           className={`downvote-button-${fullOrListView}`}
           variant="outline-danger"
@@ -33,7 +32,11 @@ export default class Voter extends Component {
           }}
           // onClick={this.removeButtonHighlight}
         >
-          Down Vote
+          <img
+            className="article-icons"
+            src="https://image.flaticon.com/icons/svg/25/25395.svg"
+            alt="thumbs down"
+          />
         </Button>
         <Button
           id={`upbutton-${changedVote === 1 ? "enabled" : "disabled"}`}
@@ -42,7 +45,11 @@ export default class Voter extends Component {
           disabled={!username}
           onClick={() => this.handleVoteClick(changedVote === 1 ? -1 : 1)}
         >
-          Up Vote
+          <img
+            className="article-icons"
+            src="https://image.flaticon.com/icons/svg/25/25423.svg"
+            alt="thumbs up"
+          />
         </Button>
       </Fragment>
     );

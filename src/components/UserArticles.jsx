@@ -8,11 +8,12 @@ export default function UserArticles({ articleCount, articles, handlePageClick, 
     <div>
       <h3>Articles</h3>
       <p>Total Articles Posted: {articleCount}</p>
+      <hr/>
       <ul>
         {articles.map(article => (
           <Link key={article.article_id} to={`/articles/${article.article_id}`}>
             {" "}
-            <li>
+            <li className="user-articles">
               {article.title} - <DatePosted createdAt={article.created_at} />{" "}
             </li>
           </Link>

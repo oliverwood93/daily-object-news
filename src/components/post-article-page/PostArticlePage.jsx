@@ -28,45 +28,46 @@ export default class PostArticlePage extends Component {
       );
     } else
       return (
-        <Card className="create-article-form">
-          <Card.Header className="post-header">
-            <p className="header">Have your say!</p>{" "}
-            <TopicSelector
-              className="topic-selector"
-              topics={topics}
-              path={path}
-              handleSelectTopic={this.handleInput}
-            />
-          </Card.Header>
-          <form onSubmit={this.handleSubmit}>
-            <div className="title-topic-container">
-              <FormControl
-                autoComplete="off"
-                className="title"
-                onChange={this.handleInput}
-                name="title"
-                type="text"
-                required
-                placeholder="Title..."
+        <div className="post-article-wrapper">
+          <Card className="create-article-form">
+            <Card.Header className="post-header">
+              <p className="header">Have your say!</p>{" "}
+              <TopicSelector
+                className="topic-selector"
+                topics={topics}
+                path={path}
+                handleSelectTopic={this.handleInput}
               />
+            </Card.Header>
+            <form onSubmit={this.handleSubmit}>
+              <div className="title-topic-container">
+                <FormControl
+                  autoComplete="off"
+                  className="title"
+                  onChange={this.handleInput}
+                  name="title"
+                  type="text"
+                  required
+                  placeholder="Title..."
+                />
 
-              {topic === "newTopic" && (
-                <PostNewTopic className="post-topic-form" handleInput={this.handleInput} />
-              )}
-            </div>
-            <textarea
-              className="article-body"
-              required
-              onChange={this.handleInput}
-              required
-              name="body"
-              placeholder="Please Write Article Here..."
-            />
-            <Button className="post-button" type="submit">
-              Post Article
-            </Button>
-          </form>
-        </Card>
+                {topic === "newTopic" && (
+                  <PostNewTopic className="post-topic-form" handleInput={this.handleInput} />
+                )}
+              </div>
+              <textarea
+                className="article-body"
+                onChange={this.handleInput}
+                required
+                name="body"
+                placeholder="Please Write Article Here..."
+              />
+              <Button className="post-button" type="submit">
+                Post Article
+              </Button>
+            </form>
+          </Card>
+        </div>
       );
   }
 
