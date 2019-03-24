@@ -1,33 +1,40 @@
 .title-topic-container {
-  margin-left: 4vw;
-  width: 80vw;
+  margin-left: 1vw;
+  width: 95vw;
   display: grid;
-  grid-template-rows: auto auto auto;
-  grid-template-columns: 3fr 1fr;
-  grid-template-areas: "title" "select" "new-topic";
+  grid-template-rows: auto auto;
+  grid-template-columns: 1fr;
+  grid-template-areas: "title" "new-topic";
 }
 
 .article-body {
-  margin-top: 2vh;
-  width: 90vw;
-  margin-left: 4vw;
+  grid-area: text;
+  width: 95vw;
+  margin-left: 1vw;
   height: 58vh;
+  margin-top: 1vh;
 }
-/* .topic-name{
-  grid-area: new-topic;
-}
-.topic-description{
-  grid-area: new-description;
-} */
 
 .new-topic {
   grid-area: new-topic;
+  display: grid;
+  grid-template-rows: 1fr;
+  grid-template-columns: 1.3fr 2fr;
+  grid-template-areas: "name description";
+}
+.topic-name{
+  grid-area: name;
+   height: 4vh;
+   width: 37vw
+}
+.topic-description{
+  grid-area: description;
+   height: 4vh;
 }
 
 .title {
+  margin: 1vh 0 1vh 0;
   grid-area: title;
-  /* margin-top: 2vh;
-  margin-bottom: 2vh; */
   height: 4vh;
 }
 .title > input {
@@ -35,13 +42,43 @@
   grid-area: title;
 }
 
-.topic-selector {
-  grid-area: select;
+.post-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: "header select";
 }
 
-.create-account-form {
+.topic-selector {
+  grid-area: select;
+  width: 40vw;
+}
+
+.header {
+  grid-area: header;
+  margin-bottom: 0;
+}
+
+.create-article-form {
   text-align: left;
   width: 98vw;
   margin-left: 1vw;
   margin-top: 1vh;
+}
+
+/* .body-button-container {
+  height: 65vh;
+  width: 98vw;
+  display: grid;
+  grid-template-rows: 0.5fr 1fr;
+  grid-template-columns: 1fr;
+  grid-template-areas: "text" "button";
+} */
+
+.post-button {
+  grid-area: button;
+  margin-top: 1vh;
+  width: 95vw;
+  margin-left: 1vw;
+  margin-bottom: 1vh;
 }

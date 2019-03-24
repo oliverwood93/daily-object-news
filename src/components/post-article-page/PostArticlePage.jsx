@@ -4,7 +4,7 @@ import TopicSelector from "../TopicSelector";
 import PostNewTopic from "../PostNewTopic";
 import { postUserTopicOrArticle } from "../../utils/api-requests";
 import "./PostArticlePage.css";
-import { Card } from "react-bootstrap";
+import { Card, InputGroup, FormControl, Button, Form } from "react-bootstrap";
 
 export default class PostArticlePage extends Component {
   state = {
@@ -26,24 +26,27 @@ export default class PostArticlePage extends Component {
       );
     } else
       return (
-        <Card className="create-account-form">
-          <Card.Header>Have your say!</Card.Header>
+        <Card className="create-article-form">
+          <Card.Header className="post-header">
+            <p className="header">Have your say!</p>{" "}
+            <TopicSelector
+              className="topic-selector"
+              topics={topics}
+              path={path}
+              handleSelectTopic={this.handleSelectTopic}
+            />
+          </Card.Header>
           <form onSubmit={this.handleSubmit}>
             {" "}
             <div className="title-topic-container">
-              <input
+              <FormControl
+                autoComplete="off"
                 className="title"
                 onChange={this.handleTitleChange}
                 name="title-input"
                 type="text"
                 required
                 placeholder="Title..."
-              />
-              <TopicSelector
-                className="topic-selector"
-                topics={topics}
-                path={path}
-                handleSelectTopic={this.handleSelectTopic}
               />
 
               {topic === "newTopic" && (
@@ -54,20 +57,16 @@ export default class PostArticlePage extends Component {
                 />
               )}
             </div>
-            <div className="body-button-container">
-              <textarea
-                className="article-body"
-                required
-                onChange={this.handleBodyChange}
-                name="article-body"
-                rows="30"
-                cols="65"
-                placeholder="Please Write Article Here..."
-              />
-              <button className="post-button" type="submit">
-                Post Article
-              </button>
-            </div>
+            <textarea
+              className="article-body"
+              required
+              onChange={this.handleBodyChange}
+              required
+              placeholder="Please Write Article Here..."
+            />
+            <Button className="post-button" type="submit">
+              Post Article
+            </Button>
           </form>
         </Card>
       );
@@ -76,6 +75,7 @@ export default class PostArticlePage extends Component {
   handleSelectTopic = event => {
     const topic = event.target.value;
     this.setState({ topic });
+    return topic;
   };
   handleTitleChange = event => {
     const title = event.target.value;
@@ -94,6 +94,7 @@ export default class PostArticlePage extends Component {
     this.setState({ description });
   };
   handleSubmit = event => {
+    console.log(this.state);
     event.preventDefault();
     const username = this.props.loggedInUser;
     const { slug, description, topic, title, body } = this.state;

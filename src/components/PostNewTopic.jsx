@@ -1,9 +1,11 @@
 import React, { Fragment } from "react";
+import { FormControl } from "react-bootstrap";
 
 export default function PostNewTopic({ handleNameChange, handleDescriptionChange }) {
   return (
     <div className="new-topic">
-      <input
+      <FormControl
+        autoComplete="off"
         className="topic-name"
         placeholder="Topic..."
         required
@@ -11,8 +13,9 @@ export default function PostNewTopic({ handleNameChange, handleDescriptionChange
         name="name"
         type="text"
       />
-      <input
+      <FormControl
         required
+        autoComplete="off"
         className="topic-description"
         placeholder="Description of Topic..."
         onChange={handleDescriptionChange}
