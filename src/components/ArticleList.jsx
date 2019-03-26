@@ -5,9 +5,6 @@ import Voter from "./Voter";
 import Paginator from "./Paginator";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import CardColumns from "react-bootstrap/CardColumns";
-import MediaQuery from "react-responsive";
-import { wrap } from "module";
 
 export default function ArticleList({
   articles,

@@ -37,6 +37,7 @@ export default class CommentSection extends Component {
       </Card>
     );
   }
+
   handleBlur = event => {
     const commentToAdd = event.target.value;
     this.setState({ commentToAdd });

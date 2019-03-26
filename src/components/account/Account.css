@@ -1,15 +1,33 @@
-.user-avatar-account{
+.user-avatar-account {
   display: inline-block;
   width: 20vw;
   height: auto;
   border-radius: 50%;
-  border: 2px solid greenyellow
+  border: 2px solid greenyellow;
 }
 
-.user-articles{
+.user-articles {
   list-style: none;
 }
 
-.username-account-h1{
+.username-account-h1 {
   font-size: 20px;
 }
+
+.user-articles-link {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+.user-article-card {
+  margin-right: 5vw;
+  margin-bottom: 1vh;
+    background-color: whitesmoke;
+}
+
+@media only screen and (max-width: 500px) {
+  .user-article-card {
+    margin-right: 10vw;
+  }
+}
+

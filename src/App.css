@@ -31,7 +31,7 @@ select {
   height: 8vh;
   background-color: rgb(31, 81, 85);
   display: grid;
-  /* grid-template-columns: 1.6fr 0.3fr; */
+
   grid-template-rows: 1fr;
   grid-template-areas: "header";
   justify-items: center;
