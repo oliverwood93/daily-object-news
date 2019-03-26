@@ -1,10 +1,12 @@
 .title-topic-container {
-  margin-left: 1vw;
+  background-color: whitesmoke;
+  margin-left: 3vw;
   width: 95vw;
   display: grid;
   grid-template-rows: auto auto;
   grid-template-columns: 1fr;
   grid-template-areas: "title" "new-topic";
+  justify-items: center;
 }
 
 .article-body {
@@ -22,14 +24,14 @@
   grid-template-columns: 1.3fr 2fr;
   grid-template-areas: "name description";
 }
-.topic-name{
+.topic-name {
   grid-area: name;
-   height: 4vh;
-   width: 37vw
+  height: 4vh;
+  width: 37vw;
 }
-.topic-description{
+.topic-description {
   grid-area: description;
-   height: 4vh;
+  height: 4vh;
 }
 
 .title {
@@ -43,6 +45,7 @@
 }
 
 .post-header {
+  font-size: 0.7rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
@@ -60,6 +63,8 @@
 }
 
 .create-article-form {
+  background-color: whitesmoke;
+
   text-align: left;
   width: 98vw;
   margin-left: 1vw;
@@ -75,27 +80,31 @@
 }
 
 @media only screen and (min-width: 770px) {
-  .post-button{
+  .post-header {
+    font-size: 1rem;
+  }
+  .post-button {
     width: 40vw;
   }
-  .create-article-form{
-    width: 55vw;
+  .create-article-form {
+    background-color: whitesmoke;
+
+    width: 45vw;
     text-align: center;
   }
 
-  .post-article-wrapper{
+  .post-article-wrapper {
     display: inline-block;
   }
-  .topic-name{
+  .topic-name {
     width: 20vw;
     margin-right: 1vw;
-
+    justify-self: center;
   }
   .title-topic-container {
-    width: 50vw;
+    width: 40vw;
   }
-  .article-body{
-    width: 50vw;
-    /* margin-left: 0; */
+  .article-body {
+    width: 40vw;
   }
 }

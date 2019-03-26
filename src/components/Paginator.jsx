@@ -17,7 +17,7 @@ export default function Paginator({ page, itemCount, limit, handlePageClick }) {
       {pages.map((currPage, i) => (
         <Button
           key={`page-nums-${i}`}
-          // onClick={() => handlePageClick(currPage < page ? i + 1 : i -1)}
+          onClick={() => handlePageClick(currPage, true)}
           disabled={currPage === page ? true : false}
           variant={currPage === page ? "primary" : "secondary"}
           className={`page-nums-${i}`}

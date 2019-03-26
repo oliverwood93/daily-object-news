@@ -116,10 +116,11 @@ class Articles extends Component {
         })
       );
   };
-  handlePageClick = event => {
+  handlePageClick = (event, isNumClicked) => {
+
     const pageDirection = event;
     const { currentPage } = this.state;
-    this.setState({ currentPage: currentPage + pageDirection });
+    this.setState({ currentPage: isNumClicked ? pageDirection : currentPage + pageDirection });
   };
 }
 

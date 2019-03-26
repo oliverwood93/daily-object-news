@@ -1,7 +1,7 @@
 .article-display {
   width: 97.5vw;
   margin-left: 1vw;
-  margin-top: 3vh;
+  margin-top: 1vh;
 }
 
 .article-title {
@@ -32,6 +32,7 @@
   margin-top: 0.5vh;
   border-radius: 5%;
   margin: auto;
+  justify-items: center;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 0.6fr 1fr;
   grid-template-areas: ".. vote .." "upvote delete downvote";
@@ -54,7 +55,7 @@
   grid-area: del;
   width: 20vw;
   height: 5vh;
-  margin: 0;
+  margin-bottom: 1vh;
 }
 
 .comment-count-full {
@@ -72,15 +73,16 @@
   width: 20vw;
   height: 5vh;
 
-  margin: 0;
+  margin-bottom: 1vh;
   grid-area: upvote;
 }
 .downvote-button-full {
   display: grid;
   width: 20vw;
-  margin: 0;
+  margin-bottom: 1vh;
   grid-area: downvote;
   height: 5vh;
+
 }
 
 .comments-container {
@@ -150,33 +152,40 @@
   width: 20vw;
 }
   .article-display {
-    width: 70vw;
+    width: 60vw;
     display: inline-block;
   }
   .voter-wrapper {
     display: inline-block;
   }
   .vote-container {
-    width: 70vw;
+    width: 60vw;
     display: grid;
     align-items: center;
     justify-content: center;
   }
   .comments-container {
     margin-top: 1vh;
-    width: 70vw;
+    width: 60vw;
     display: inline-block;
   }
   .new-comment-text {
-    width: 65vw;
+    width: 55vw;
   }
   
   .comment-list {
-    width: 70vw;
+    width: 60vw;
   }
   .vote-container-comment {
     width: 50vw;
   }
+  .upvote-button-full {
+ width: 10vw;
+
+}
+.downvote-button-full {
+ width: 10vw;
+}
 }
 
 @media only screen and (max-width: 350px) {
@@ -210,4 +219,5 @@ width: auto;
  width: 30vw;
   height: 10vh;
 }
+
 }

@@ -3,8 +3,8 @@
   position: fixed;
   width: 36px;
   height: 30px;
-  left: 36px;
-  top: 30px;
+  left: 1.5vw;
+  top: 2vh;
 }
 @media only screen and (max-width: 500px) {
 .bm-burger-button {
@@ -17,7 +17,7 @@
 }
 /* Color/shape of burger icon bars */
 .bm-burger-bars {
-  background: gray;
+  background: rgb(171, 173, 172);
    border-radius: 10%
 }
 
@@ -48,7 +48,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 
 /* General sidebar styles */
 .bm-menu {
-  background: slategray;
+  background: #B4CEB3;
   padding: 2.5em 1.5em 0;
   font-size: 1.15em;
 }
@@ -62,6 +62,7 @@ Note: Beware of modifying this element as it can break the animations - you shou
 .bm-item-list {
   color: #1c243c;
   padding: 0.8em;
+  overflow: hidden;
 }
 
 /* Individual item */

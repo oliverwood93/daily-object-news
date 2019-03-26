@@ -29,22 +29,31 @@ select {
 .header-container {
   width: 100%;
   height: 8vh;
-  background-color: black;
+  background-color: rgb(31, 81, 85);
   display: grid;
-  grid-template-columns: 1.6fr 0.3fr;
+  /* grid-template-columns: 1.6fr 0.3fr; */
   grid-template-rows: 1fr;
-  grid-template-areas: "header login-icon ";
-  border-bottom-left-radius: 6%;
-  border-bottom-right-radius: 6%;
+  grid-template-areas: "header";
+  justify-items: center;
   
 }
 
 .site-header {
   grid-area: header;
   color: white;
-  margin-top: 2vh;
+  margin-top: 1vh;
   margin-left: 4vw;
 }
+
+.home-header{
+  background-color: rgb(74, 212, 189);
+  height: 4vh;
+  border-radius: 0
+  
+  
+}
+
+
 .login-icon {
   grid-area: login-icon;
   height: 6vh;
@@ -53,7 +62,10 @@ select {
   border-radius: 50%;
   background-color: white;
   margin-top: 1vh;
-  margin-left: 1vw;
+  margin-left: 2.5vw;
+  position: fixed;
+  right: 2.8vw;
+  z-index: 1000;
 }
 .user-avatar {
   grid-area: login-icon;
@@ -62,7 +74,7 @@ select {
   border: 2px solid greenyellow;
   border-radius: 50%;
   background-color: white;
-  margin-top: 1.4vh;
+  margin-top: 1vh;
   margin-left: 2.5vw;
   position: fixed;
   right: 2.8vw;
@@ -74,6 +86,11 @@ select {
     font-size: 6vw;
     padding-left: 6vw;
     height: 17vw;
+    margin-right: 10vw;
+    margin-top: 2.2vh;
+  }
+  .user-avatar { 
+    margin-top: 1.5vh;
   }
 }
 

@@ -38,27 +38,31 @@ export default class Article extends Component {
         <div>
           <ArticleDisplay article={article} />
           <div className="voter-wrapper">
-          <div className="vote-container">
-            <Voter
-              className="voter-article-list"
-              articleOrComment={article}
-              id={article.article_id}
-              path="/articles"
-              username={username}
-            />
-            {username === article.author && (
-              <Button
-                className="delete-button"
-                variant="danger"
-                onClick={this.handleRemoveItem}
-                value={article.article_id}
-              >
-                Delete Article
-              </Button>
-            )}
+            <div className="vote-container">
+              <Voter
+                className="voter-article-list"
+                articleOrComment={article}
+                id={article.article_id}
+                path="/articles"
+                username={username}
+              />
+              {username === article.author && (
+                <Button
+                  className="delete-button"
+                  variant="danger"
+                  onClick={this.handleRemoveItem}
+                  value={article.article_id}
+                >
+                  Delete Article
+                </Button>
+              )}
+            </div>
           </div>
-          <CommentSection articleId={this.props.id} username={username} commentCount={article.comment_count}/>
-          </div>
+          <CommentSection
+            articleId={this.props.id}
+            username={username}
+            commentCount={article.comment_count}
+          />
         </div>
       );
     }

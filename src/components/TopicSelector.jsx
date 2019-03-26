@@ -3,11 +3,11 @@ import React, { Fragment } from "react";
 function TopicSelector({ topics, handleSelectTopic, path }) {
   return (
     <Fragment>
-    <select 
+      <select
         name={path === "/articles" ? "article" : "topic"}
         defaultValue={path === "/articles" ? "Filter Articles By Topic" : "Please Select a Topic"}
         onChange={handleSelectTopic}
-        
+        className={`filter-${path === "/articles" ? "article" : "topic"}`}
       >
         {path === "/articles" ? (
           <Fragment>

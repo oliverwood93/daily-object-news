@@ -1,9 +1,11 @@
 .articles-header-container {
+  background-color: whitesmoke;
   width: 98vw;
   margin-top: 1vh;
   margin-left: 1vw;
 }
 .articles-filter-container {
+  background-color: whitesmoke;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
@@ -62,6 +64,7 @@
 }
 
 .articles-header {
+  
   font-size: 1.5rem;
   margin: 0;
   display: grid;
@@ -84,6 +87,7 @@
   width: 98vw;
 }
 .article-list-card {
+  background-color: whitesmoke;
   margin-bottom: 0.5vh;
 }
 
@@ -173,14 +177,34 @@
   
 
 }
+.articles-filter-container {
+  width: 60vw;
+  justify-items: left;
+   grid-template-areas: "filter sort order" "button button button";
+}
+#sort-by {
+  grid-area: sort;
+  width: 15vw;
+}
+#order {
+  grid-area: order;
+  width: 15vw;
+}
+#sort-button {
+  grid-area: button;
+  width: 25vw;
+  margin-top: 1vh;
+  margin-bottom: 1vh;
+  justify-self: center;
+}
   
   .articles-header-container {
-    width: 80vw;
+    width: 60vw;
     display: inline-block;
   }
   .articles-container {
     display: inline-block;
-    width: 80vw;
+    width: 60vw;
   }
   .article-icons{
   height: 5vh;
@@ -190,6 +214,35 @@
 .comment-count-full {
 width: auto;
   height: auto;
+}
+.comment-count-list {
+  grid-area: comment;
+  display: grid;
+  width: 20vw;
+  margin-bottom: 2vh;
+}
+
+.vote-count-list {
+  grid-area: vote;
+  display: grid;
+  width: 20vw;
+  margin-bottom: 2vh;
+}
+.upvote-button-list {
+  display: grid;
+  grid-area: upvote;
+   justify-self: center;
+}
+.downvote-button-list {
+  display: grid;
+  grid-area: downvote;
+  justify-self: center;
+}
+.more-button {
+  display: grid;
+  grid-area: more;
+  height: 5vh;
+  margin: 0;
 }
 
 
@@ -207,14 +260,14 @@ width: auto;
 #order {
   width: 22vw;
   margin-top: 1.5vh;
-  height: 3vh;
+  height: 3.5vh;
 }
 
 .articles-header-container{
-  width: 91vw;
+  width: 98vw;
 }
 .articles-container{
-  width: 91vw;
+  width: 98vw;
 }
 
 
